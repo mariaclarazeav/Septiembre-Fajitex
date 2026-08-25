@@ -519,6 +519,39 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 }
 .nota-planb-hito .clave { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--menta); }
 .nota-planb-hito p { margin-top: 5px; }
+.escenario + .escenario { margin-top: 24px; }
+.escenario__cabeza { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
+.escenario__titulo { font-size: 1.5rem; }
+.riesgo {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 999px; white-space: nowrap;
+}
+.riesgo--producto { background: var(--menta); color: #FFFFFF; }
+:root[data-theme="dark"] .riesgo--producto { color: #08211D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .riesgo--producto { color: #08211D; } }
+.riesgo--alianza { background: var(--rojo); color: #FFF6F0; }
+
+.cambios { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.cambio { padding: 18px 20px; border-radius: var(--radio-chico); background: var(--nata-alta); border: 1px solid var(--linea); }
+.cambio:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.cambio__alto { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.cambio__pieza { font-family: var(--titular); font-weight: 800; font-size: 1.02rem; }
+.estado {
+  font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+}
+.estado--intacto { border: 1px solid var(--menta); color: var(--menta); }
+.estado--ajusta { background: var(--nude); color: var(--tinta); }
+.estado--reemplaza { border: 1px solid var(--rojo); color: var(--rojo); }
+.cambio p.texto { margin-top: 8px; font-size: .95rem; color: var(--tinta-sec); }
+
+.planb__cierre {
+  margin-top: 30px; padding: 22px 26px; border-radius: var(--radio);
+  background: var(--nata); border: 1px solid var(--menta);
+  font-family: var(--titular); font-weight: 700; font-size: 1.1rem; line-height: 1.4;
+}
+.planb__cierre strong { color: var(--menta); font-weight: 800; }
+
 
 /* ============ 07 Canal B2B: lectura ejecutiva, menos adorno ============ */
 .b2b__intro { max-width: 66ch; font-size: 1.06rem; color: var(--tinta-sec); }
@@ -591,7 +624,7 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 .columna--no li::before { color: var(--rojo); }
 
 @media (max-width: 1100px) {
-  .diagnostico, .modelos, .tacticas, .dos-columnas { grid-template-columns: 1fr; }
+  .diagnostico, .modelos, .tacticas, .dos-columnas, .cambios { grid-template-columns: 1fr; }
 }
 
 /* ============ Plan B ============ */

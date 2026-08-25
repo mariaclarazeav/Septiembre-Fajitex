@@ -519,6 +519,39 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 }
 .nota-planb-hito .clave { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--menta); }
 .nota-planb-hito p { margin-top: 5px; }
+.escenario + .escenario { margin-top: 24px; }
+.escenario__cabeza { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
+.escenario__titulo { font-size: 1.5rem; }
+.riesgo {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 999px; white-space: nowrap;
+}
+.riesgo--producto { background: var(--menta); color: #FFFFFF; }
+:root[data-theme="dark"] .riesgo--producto { color: #08211D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .riesgo--producto { color: #08211D; } }
+.riesgo--alianza { background: var(--rojo); color: #FFF6F0; }
+
+.cambios { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.cambio { padding: 18px 20px; border-radius: var(--radio-chico); background: var(--nata-alta); border: 1px solid var(--linea); }
+.cambio:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.cambio__alto { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.cambio__pieza { font-family: var(--titular); font-weight: 800; font-size: 1.02rem; }
+.estado {
+  font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+}
+.estado--intacto { border: 1px solid var(--menta); color: var(--menta); }
+.estado--ajusta { background: var(--nude); color: var(--tinta); }
+.estado--reemplaza { border: 1px solid var(--rojo); color: var(--rojo); }
+.cambio p.texto { margin-top: 8px; font-size: .95rem; color: var(--tinta-sec); }
+
+.planb__cierre {
+  margin-top: 30px; padding: 22px 26px; border-radius: var(--radio);
+  background: var(--nata); border: 1px solid var(--menta);
+  font-family: var(--titular); font-weight: 700; font-size: 1.1rem; line-height: 1.4;
+}
+.planb__cierre strong { color: var(--menta); font-weight: 800; }
+
 
 /* ============ 07 Canal B2B: lectura ejecutiva, menos adorno ============ */
 .b2b__intro { max-width: 66ch; font-size: 1.06rem; color: var(--tinta-sec); }
@@ -591,7 +624,7 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 .columna--no li::before { color: var(--rojo); }
 
 @media (max-width: 1100px) {
-  .diagnostico, .modelos, .tacticas, .dos-columnas { grid-template-columns: 1fr; }
+  .diagnostico, .modelos, .tacticas, .dos-columnas, .cambios { grid-template-columns: 1fr; }
 }
 
 /* ============ Plan B ============ */
@@ -1391,12 +1424,17 @@ html { scroll-behavior: smooth; }
         <p class="seccion__numero">06</p>
         <div>
           <p class="eyebrow">Plan B</p>
-          <h2 class="seccion__titulo">Si el body no alcanza, el concepto migra sin perder fuerza</h2>
-          <p class="seccion__bajada">Escenario de producción o inventario. Se activa con la misma campaña ya montada, cambiando la pieza protagonista.</p>
+          <h2 class="seccion__titulo">Dos escenarios de contingencia, un solo concepto</h2>
+          <p class="seccion__bajada">Los dos riesgos de esta campaña son distintos y se resuelven distinto: que el producto no llegue, y que el aliado no firme a tiempo. Ninguno de los dos tumba el concepto.</p>
         </div>
       </div>
 
-      <div class="planb__caja revela">
+      <div class="escenario planb__caja revela">
+        <div class="escenario__cabeza">
+          <span class="riesgo riesgo--producto">Riesgo: producto</span>
+          <h3 class="escenario__titulo">Si el body no está listo</h3>
+        </div>
+
         <div class="giro">
           <div class="giro__lado">
             <p class="giro__clave">Escenario base</p>
@@ -1404,7 +1442,7 @@ html { scroll-behavior: smooth; }
           </div>
           <svg class="giro__flecha" viewBox="0 0 56 26" fill="none" aria-hidden="true"><path d="M2 13h44M40 5l9 8l-9 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="giro__lado giro__lado--nuevo">
-            <p class="giro__clave">Plan B: shorts y cinturillas</p>
+            <p class="giro__clave">Pivote a shorts y cinturillas</p>
             <p class="giro__frase">«El short que va contigo a donde sea»</p>
           </div>
         </div>
@@ -1430,6 +1468,71 @@ html { scroll-behavior: smooth; }
           <span class="glosa">Dos semanas antes de la fecha objetivo, con inventario confirmado</span>
         </div>
       </div>
+
+      <div class="escenario planb__caja revela">
+        <div class="escenario__cabeza">
+          <span class="riesgo riesgo--alianza">Riesgo: alianza</span>
+          <h3 class="escenario__titulo">Si la alianza con Polles no se cierra a tiempo</h3>
+        </div>
+
+        <div class="giro">
+          <div class="giro__lado">
+            <p class="giro__clave">Escenario base</p>
+            <p class="giro__frase">El match es Fajitex y Polles</p>
+          </div>
+          <svg class="giro__flecha" viewBox="0 0 56 26" fill="none" aria-hidden="true"><path d="M2 13h44M40 5l9 8l-9 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="giro__lado giro__lado--nuevo">
+            <p class="giro__clave">Campaña propia, sin aliado</p>
+            <p class="giro__frase">El match es el body y tu día</p>
+          </div>
+        </div>
+
+        <div class="cambios" style="margin-top:28px">
+          <div class="cambio">
+            <div class="cambio__alto">
+              <p class="cambio__pieza">Concepto de campaña</p>
+              <span class="estado estado--intacto">Intacto</span>
+            </div>
+            <p class="texto">«Tu Match Perfecto» funciona sin marca aliada. Nada del relato depende de que Polles firme, porque el equilibrio entre figura y disfrute ya vive en el producto.</p>
+          </div>
+          <div class="cambio">
+            <div class="cambio__alto">
+              <p class="cambio__pieza">La metáfora del match</p>
+              <span class="estado estado--ajusta">Se ajusta</span>
+            </div>
+            <p class="texto">El body pasa a ser el complemento perfecto de un look o de una rutina. El antojo se comunica con contenido propio, no con el producto de un tercero.</p>
+          </div>
+          <div class="cambio">
+            <div class="cambio__alto">
+              <p class="cambio__pieza">El bono cruzado</p>
+              <span class="estado estado--reemplaza">Se reemplaza</span>
+            </div>
+            <p class="texto">Entra un incentivo propio: descuento directo o regalo de menor valor con la compra. No hay que coordinar condiciones comerciales con nadie más.</p>
+          </div>
+          <div class="cambio">
+            <div class="cambio__alto">
+              <p class="cambio__pieza">La activación física</p>
+              <span class="estado estado--ajusta">Se ajusta</span>
+            </div>
+            <p class="texto">Se reduce a un punto de activación propio, o se reagenda para otra fecha. El concepto de campaña no se pierde en ninguno de los dos casos.</p>
+          </div>
+          <div class="cambio">
+            <div class="cambio__alto">
+              <p class="cambio__pieza">Todo lo digital</p>
+              <span class="estado estado--intacto">Intacto</span>
+            </div>
+            <p class="texto">Las tres campañas de pauta, la secuencia de correo, WhatsApp y SMS, y la captura de la base de hombres para regalo se sostienen exactamente igual. Lo único que se toca es el copy que nombraba a Polles.</p>
+          </div>
+        </div>
+
+        <div class="planb__corte">
+          <span class="clave">Ventaja de timing</span>
+          <strong>Se activa más rápido</strong>
+          <span class="glosa">No depende de aprobación de terceros ni de condiciones comerciales cruzadas</span>
+        </div>
+      </div>
+
+      <p class="planb__cierre revela">El concepto de campaña <strong>sobrevive a los dos escenarios</strong>. Lo único que cambia son las piezas que dependen de un tercero o de producción.</p>
     </div>
   </section>
 
@@ -2278,6 +2381,39 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 }
 .nota-planb-hito .clave { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--menta); }
 .nota-planb-hito p { margin-top: 5px; }
+.escenario + .escenario { margin-top: 24px; }
+.escenario__cabeza { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
+.escenario__titulo { font-size: 1.5rem; }
+.riesgo {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 999px; white-space: nowrap;
+}
+.riesgo--producto { background: var(--menta); color: #FFFFFF; }
+:root[data-theme="dark"] .riesgo--producto { color: #08211D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .riesgo--producto { color: #08211D; } }
+.riesgo--alianza { background: var(--rojo); color: #FFF6F0; }
+
+.cambios { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.cambio { padding: 18px 20px; border-radius: var(--radio-chico); background: var(--nata-alta); border: 1px solid var(--linea); }
+.cambio:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.cambio__alto { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.cambio__pieza { font-family: var(--titular); font-weight: 800; font-size: 1.02rem; }
+.estado {
+  font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+}
+.estado--intacto { border: 1px solid var(--menta); color: var(--menta); }
+.estado--ajusta { background: var(--nude); color: var(--tinta); }
+.estado--reemplaza { border: 1px solid var(--rojo); color: var(--rojo); }
+.cambio p.texto { margin-top: 8px; font-size: .95rem; color: var(--tinta-sec); }
+
+.planb__cierre {
+  margin-top: 30px; padding: 22px 26px; border-radius: var(--radio);
+  background: var(--nata); border: 1px solid var(--menta);
+  font-family: var(--titular); font-weight: 700; font-size: 1.1rem; line-height: 1.4;
+}
+.planb__cierre strong { color: var(--menta); font-weight: 800; }
+
 
 /* ============ 07 Canal B2B: lectura ejecutiva, menos adorno ============ */
 .b2b__intro { max-width: 66ch; font-size: 1.06rem; color: var(--tinta-sec); }
@@ -2350,7 +2486,7 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 .columna--no li::before { color: var(--rojo); }
 
 @media (max-width: 1100px) {
-  .diagnostico, .modelos, .tacticas, .dos-columnas { grid-template-columns: 1fr; }
+  .diagnostico, .modelos, .tacticas, .dos-columnas, .cambios { grid-template-columns: 1fr; }
 }
 
 /* ============ Plan B ============ */
@@ -3151,12 +3287,17 @@ html { scroll-behavior: smooth; }
         &lt;p class="seccion__numero">06&lt;/p>
         &lt;div>
           &lt;p class="eyebrow">Plan B&lt;/p>
-          &lt;h2 class="seccion__titulo">Si el body no alcanza, el concepto migra sin perder fuerza&lt;/h2>
-          &lt;p class="seccion__bajada">Escenario de producción o inventario. Se activa con la misma campaña ya montada, cambiando la pieza protagonista.&lt;/p>
+          &lt;h2 class="seccion__titulo">Dos escenarios de contingencia, un solo concepto&lt;/h2>
+          &lt;p class="seccion__bajada">Los dos riesgos de esta campaña son distintos y se resuelven distinto: que el producto no llegue, y que el aliado no firme a tiempo. Ninguno de los dos tumba el concepto.&lt;/p>
         &lt;/div>
       &lt;/div>
 
-      &lt;div class="planb__caja revela">
+      &lt;div class="escenario planb__caja revela">
+        &lt;div class="escenario__cabeza">
+          &lt;span class="riesgo riesgo--producto">Riesgo: producto&lt;/span>
+          &lt;h3 class="escenario__titulo">Si el body no está listo&lt;/h3>
+        &lt;/div>
+
         &lt;div class="giro">
           &lt;div class="giro__lado">
             &lt;p class="giro__clave">Escenario base&lt;/p>
@@ -3164,7 +3305,7 @@ html { scroll-behavior: smooth; }
           &lt;/div>
           &lt;svg class="giro__flecha" viewBox="0 0 56 26" fill="none" aria-hidden="true">&lt;path d="M2 13h44M40 5l9 8l-9 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>&lt;/svg>
           &lt;div class="giro__lado giro__lado--nuevo">
-            &lt;p class="giro__clave">Plan B: shorts y cinturillas&lt;/p>
+            &lt;p class="giro__clave">Pivote a shorts y cinturillas&lt;/p>
             &lt;p class="giro__frase">«El short que va contigo a donde sea»&lt;/p>
           &lt;/div>
         &lt;/div>
@@ -3190,6 +3331,71 @@ html { scroll-behavior: smooth; }
           &lt;span class="glosa">Dos semanas antes de la fecha objetivo, con inventario confirmado&lt;/span>
         &lt;/div>
       &lt;/div>
+
+      &lt;div class="escenario planb__caja revela">
+        &lt;div class="escenario__cabeza">
+          &lt;span class="riesgo riesgo--alianza">Riesgo: alianza&lt;/span>
+          &lt;h3 class="escenario__titulo">Si la alianza con Polles no se cierra a tiempo&lt;/h3>
+        &lt;/div>
+
+        &lt;div class="giro">
+          &lt;div class="giro__lado">
+            &lt;p class="giro__clave">Escenario base&lt;/p>
+            &lt;p class="giro__frase">El match es Fajitex y Polles&lt;/p>
+          &lt;/div>
+          &lt;svg class="giro__flecha" viewBox="0 0 56 26" fill="none" aria-hidden="true">&lt;path d="M2 13h44M40 5l9 8l-9 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>&lt;/svg>
+          &lt;div class="giro__lado giro__lado--nuevo">
+            &lt;p class="giro__clave">Campaña propia, sin aliado&lt;/p>
+            &lt;p class="giro__frase">El match es el body y tu día&lt;/p>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div class="cambios" style="margin-top:28px">
+          &lt;div class="cambio">
+            &lt;div class="cambio__alto">
+              &lt;p class="cambio__pieza">Concepto de campaña&lt;/p>
+              &lt;span class="estado estado--intacto">Intacto&lt;/span>
+            &lt;/div>
+            &lt;p class="texto">«Tu Match Perfecto» funciona sin marca aliada. Nada del relato depende de que Polles firme, porque el equilibrio entre figura y disfrute ya vive en el producto.&lt;/p>
+          &lt;/div>
+          &lt;div class="cambio">
+            &lt;div class="cambio__alto">
+              &lt;p class="cambio__pieza">La metáfora del match&lt;/p>
+              &lt;span class="estado estado--ajusta">Se ajusta&lt;/span>
+            &lt;/div>
+            &lt;p class="texto">El body pasa a ser el complemento perfecto de un look o de una rutina. El antojo se comunica con contenido propio, no con el producto de un tercero.&lt;/p>
+          &lt;/div>
+          &lt;div class="cambio">
+            &lt;div class="cambio__alto">
+              &lt;p class="cambio__pieza">El bono cruzado&lt;/p>
+              &lt;span class="estado estado--reemplaza">Se reemplaza&lt;/span>
+            &lt;/div>
+            &lt;p class="texto">Entra un incentivo propio: descuento directo o regalo de menor valor con la compra. No hay que coordinar condiciones comerciales con nadie más.&lt;/p>
+          &lt;/div>
+          &lt;div class="cambio">
+            &lt;div class="cambio__alto">
+              &lt;p class="cambio__pieza">La activación física&lt;/p>
+              &lt;span class="estado estado--ajusta">Se ajusta&lt;/span>
+            &lt;/div>
+            &lt;p class="texto">Se reduce a un punto de activación propio, o se reagenda para otra fecha. El concepto de campaña no se pierde en ninguno de los dos casos.&lt;/p>
+          &lt;/div>
+          &lt;div class="cambio">
+            &lt;div class="cambio__alto">
+              &lt;p class="cambio__pieza">Todo lo digital&lt;/p>
+              &lt;span class="estado estado--intacto">Intacto&lt;/span>
+            &lt;/div>
+            &lt;p class="texto">Las tres campañas de pauta, la secuencia de correo, WhatsApp y SMS, y la captura de la base de hombres para regalo se sostienen exactamente igual. Lo único que se toca es el copy que nombraba a Polles.&lt;/p>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div class="planb__corte">
+          &lt;span class="clave">Ventaja de timing&lt;/span>
+          &lt;strong>Se activa más rápido&lt;/strong>
+          &lt;span class="glosa">No depende de aprobación de terceros ni de condiciones comerciales cruzadas&lt;/span>
+        &lt;/div>
+      &lt;/div>
+
+      &lt;p class="planb__cierre revela">El concepto de campaña &lt;strong>sobrevive a los dos escenarios&lt;/strong>. Lo único que cambia son las piezas que dependen de un tercero o de producción.&lt;/p>
     &lt;/div>
   &lt;/section>
 
