@@ -337,7 +337,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .costo p { margin-top: 8px; font-size: .95rem; color: var(--tinta); }
 
 /* ============ Paid media ============ */
-.campanas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.campanas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
 .campana { display: flex; flex-direction: column; background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); }
 .campana__cabeza { padding: 20px 20px 18px; border-bottom: 1px solid var(--linea); background: var(--nata-alta); }
 .campana__num { font-family: var(--display); font-size: 1.5rem; color: var(--rojo); line-height: 1; }
@@ -351,6 +351,72 @@ ul { margin: 0; padding: 0; list-style: none; }
 .campana__pie { margin-top: auto; padding: 14px 20px; background: var(--nude); font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; color: var(--tinta); }
 .campana--marcada { border-color: var(--rojo); box-shadow: var(--sombra-alta); }
 .campana--marcada .campana__pie { background: var(--rojo); color: #FFF6F0; }
+
+/* ---- Tarjetas de campaña A, B y C ---- */
+.campana__letra {
+  font-family: var(--display); font-size: 2.6rem; line-height: .9; color: var(--rojo);
+}
+.campana__meta {
+  display: inline-block; margin-top: 12px;
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid var(--linea-firme); border-radius: 999px; padding: 4px 11px; color: var(--tinta-sec);
+}
+.campana__meta--conversion { border-color: var(--rojo); color: var(--rojo); }
+.limite {
+  display: block; margin-top: 8px; font-family: var(--mono); font-size: .72rem; line-height: 1.5;
+  padding: 8px 11px; border-radius: 6px; background: var(--nude); color: var(--tinta);
+}
+.marca-aprob--linea { display: inline-block; margin-top: 10px; }
+
+.subconjuntos { display: grid; gap: 10px; margin-top: 6px; }
+.subconjunto { padding: 12px 14px; border-radius: var(--radio-chico); background: var(--nata-alta); border: 1px solid var(--linea); }
+.subconjunto__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rojo); }
+.subconjunto p { margin-top: 4px; font-size: .92rem; }
+
+.flujo-mini { display: grid; gap: 12px; margin-top: 6px; }
+.rama { padding: 13px 15px; border-radius: var(--radio-chico); border: 1px dashed var(--linea-firme); }
+.rama__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rojo); }
+.rama__pasos { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-top: 7px; }
+.rama__paso { font-size: .88rem; font-weight: 500; }
+.rama__flecha { color: var(--rojo); font-size: .9rem; line-height: 1; }
+.rama__fin { font-family: var(--titular); font-weight: 800; font-size: .92rem; color: var(--rojo); }
+
+.variantes { margin-top: 8px; display: grid; gap: 6px; }
+.variante { font-size: .89rem; font-style: italic; color: var(--tinta-sec); padding-left: 12px; border-left: 2px solid var(--nude-hondo); }
+
+/* ---- Prioridad de presupuesto: barra, color y texto ---- */
+.presupuesto { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--linea); background: var(--nata-alta); }
+.presupuesto__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.barra-nivel { display: flex; gap: 4px; margin-top: 8px; }
+.barra-nivel span { flex: 1 1 0; height: 9px; border-radius: 3px; background: var(--linea); }
+.barra-nivel span.on { background: var(--nude-hondo); }
+.presupuesto--alto .barra-nivel span.on { background: var(--rojo); }
+.presupuesto--medioalto .barra-nivel span.on { background: var(--rojo); opacity: .72; }
+.presupuesto__texto {
+  display: inline-block; margin-top: 10px; font-family: var(--titular); font-weight: 800; font-size: .92rem;
+  padding: 4px 12px; border-radius: 999px; background: var(--nude); color: var(--tinta);
+}
+.presupuesto--alto .presupuesto__texto { background: var(--rojo); color: #FFF6F0; }
+.presupuesto--medioalto .presupuesto__texto { background: transparent; color: var(--rojo); border: 1.5px solid var(--rojo); }
+
+/* ---- Tablas de la sección ---- */
+.tabla-envoltura { overflow-x: auto; margin-top: 26px; border: 1px solid var(--linea); border-radius: var(--radio); background: var(--nata); }
+.tabla-titulo { padding: 15px 22px; border-bottom: 1px solid var(--linea); background: var(--nude); }
+.tabla-titulo strong { font-family: var(--titular); font-weight: 800; font-size: 1.05rem; }
+.tabla-titulo span { display: block; margin-top: 3px; font-size: .92rem; color: var(--tinta); opacity: .8; }
+table.datos { width: 100%; border-collapse: collapse; font-size: .95rem; }
+table.datos th {
+  text-align: left; font-family: var(--mono); font-weight: 500; font-size: .66rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec);
+  padding: 13px 22px; border-bottom: 1px solid var(--linea); white-space: nowrap;
+}
+table.datos td { padding: 14px 22px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+table.datos tr:last-child td { border-bottom: 0; }
+table.datos .fecha { font-family: var(--titular); font-weight: 800; white-space: nowrap; }
+table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-size: 1.15rem; }
+.marca-nivel { font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: var(--nude); color: var(--tinta); white-space: nowrap; }
+.marca-nivel--alto { background: var(--rojo); color: #FFF6F0; }
+.marca-nivel--medioalto { background: transparent; border: 1.5px solid var(--rojo); color: var(--rojo); }
 
 .notas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 28px; }
 .nota { padding: 22px 24px; border-radius: var(--radio); border: 1px solid var(--linea); background: var(--nata); }
@@ -476,7 +542,8 @@ html { scroll-behavior: smooth; }
 @media (max-width: 1100px) {
   .contenedor { width: calc(100% - 48px); }
   .concepto__rejilla { grid-template-columns: 1fr; gap: 36px; }
-  .galeria, .campanas, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: repeat(2, 1fr); }
+  .galeria, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: repeat(2, 1fr); }
+  .campanas { grid-template-columns: 1fr; }
   .linea-tiempo::before { display: none; }
   .decisiones, .notas, .planb__cols, .aviso__cuerpo, .activacion { grid-template-columns: 1fr; }
 }
@@ -490,7 +557,7 @@ html { scroll-behavior: smooth; }
   .seccion__encabezado { grid-template-columns: 1fr; gap: 10px; }
   .seccion__numero { font-size: 2.4rem; }
   .seccion__titulo { font-size: 2rem; }
-  .galeria, .campanas, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: 1fr; }
+  .galeria, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: 1fr; }
   .ruta { grid-template-columns: 1fr; }
   .marco--tira .marco__lienzo, .marco--tira .marco__foto { aspect-ratio: 16 / 10; }
   .flujo { flex-wrap: wrap; }
@@ -775,74 +842,225 @@ html { scroll-behavior: smooth; }
         <p class="seccion__numero">04</p>
         <div>
           <p class="eyebrow">Arquitectura de paid media</p>
-          <h2 class="seccion__titulo">Cuatro campañas, un solo concepto</h2>
-          <p class="seccion__bajada">Tres de captación con públicos separados y una de cierre que recoge todo lo anterior.</p>
+          <h2 class="seccion__titulo">Tres campañas, un solo concepto</h2>
+          <p class="seccion__bajada">Una de reconocimiento en Medellín, una que mezcla reconocimiento y remarketing sobre la base propia, y una de conversión nacional que además captura base masculina.</p>
         </div>
       </div>
 
       <div class="campanas revela">
+
         <article class="campana">
           <div class="campana__cabeza">
-            <p class="campana__num">01</p>
-            <h3 class="campana__nombre">Lanzamiento del body</h3>
+            <p class="campana__letra">A</p>
+            <h3 class="campana__nombre">Tu Match Perfecto</h3>
+            <span class="campana__meta">Meta: Reconocimiento</span>
           </div>
           <div class="campana__cuerpo">
-            <div class="campo"><p class="campo__clave">Público</p><p class="campo__valor">Mujeres de 20 a 35 años</p></div>
-            <div class="campo"><p class="campo__clave">Canal</p><p class="campo__valor">Meta e Instagram. Reels, orgánico y pauta</p></div>
-            <div class="campo"><p class="campo__clave">Concepto y CTA</p><p class="campo__valor"><strong>«Tu Match Perfecto»</strong>, en tono tardeo de sábado</p></div>
+            <div class="campo">
+              <p class="campo__clave">Objetivo de negocio</p>
+              <p class="campo__valor">Impactar audiencia nueva con el body como producto de alta demanda, apalancado en la colaboración con Polles.</p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Geo</p>
+              <p class="campo__valor">Medellín y 40 km a la redonda
+                <span class="limite">Restricción: el radio lo fija la vigencia de la promoción física. Fuera de ese rango el bono no se puede redimir.</span>
+              </p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Audiencia</p>
+              <p class="campo__valor">Mujeres de 20 a 35 años. Intereses en moda, wellness, food y repostería, lifestyle.</p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Red y ubicaciones</p>
+              <p class="campo__valor">Instagram. Reels y Stories.</p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Mensaje y CTA</p>
+              <p class="campo__valor"><strong>«Tu Match Perfecto»</strong></p>
+            </div>
           </div>
-          <p class="campana__pie">Objetivo: awareness y tráfico a landing</p>
+          <div class="presupuesto presupuesto--alto">
+            <p class="presupuesto__clave">Prioridad de presupuesto</p>
+            <div class="barra-nivel" role="img" aria-label="Prioridad alta, cuatro de cuatro">
+              <span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span>
+            </div>
+            <p class="presupuesto__texto">Alta</p>
+          </div>
+        </article>
+
+        <article class="campana">
+          <div class="campana__cabeza">
+            <p class="campana__letra">B</p>
+            <h3 class="campana__nombre">Mis Curvas, Mis Reglas</h3>
+            <span class="campana__meta">Meta: Reconocimiento y Remarketing</span>
+          </div>
+          <div class="campana__cuerpo">
+            <div class="campo">
+              <p class="campo__clave">Objetivo de negocio</p>
+              <p class="campo__valor">Dar visibilidad a las clientas actuales de 35 años y más, incentivar que se unan a la comunidad «Mis Curvas, Mis Reglas» y activar el incentivo 2x3.</p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Dos conjuntos</p>
+              <div class="subconjuntos">
+                <div class="subconjunto">
+                  <p class="subconjunto__clave">01 · Reconocimiento</p>
+                  <p>Público similar construido sobre la base propia. Audiencia nueva con el mismo perfil de la clienta que ya compra.</p>
+                </div>
+                <div class="subconjunto">
+                  <p class="subconjunto__clave">02 · Remarketing</p>
+                  <p>Base propia de clientas de 35 años y más. Gente que ya conoce la marca y solo necesita el gancho.</p>
+                </div>
+              </div>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Geo</p>
+              <p class="campo__valor">Por definir
+                <span class="pendiente">Pendiente: depende de si el 2x3 se activa en tienda física o solo en canal propio</span>
+              </p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Red y ubicaciones</p>
+              <p class="campo__valor">Por definir
+                <span class="pendiente">Pendiente: propuesta de Facebook por perfil de edad, sin confirmar</span>
+              </p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Mensaje y CTA</p>
+              <p class="campo__valor">Mismo concepto <strong>«Match Perfecto»</strong> en tono «date el gusto», con el <strong>2x3</strong> como gancho.
+                <span class="marca-aprob marca-aprob--linea">El 2x3 requiere aprobación</span>
+              </p>
+            </div>
+          </div>
+          <div class="presupuesto">
+            <p class="presupuesto__clave">Prioridad de presupuesto</p>
+            <div class="barra-nivel" role="img" aria-label="Prioridad media baja, dos de cuatro">
+              <span class="on"></span><span class="on"></span><span></span><span></span>
+            </div>
+            <p class="presupuesto__texto">Media baja</p>
+          </div>
         </article>
 
         <article class="campana campana--marcada">
           <div class="campana__cabeza">
-            <p class="campana__num">02</p>
-            <h3 class="campana__nombre">Regalo para ellas</h3>
+            <p class="campana__letra">C</p>
+            <h3 class="campana__nombre">El regalo perfecto</h3>
+            <span class="campana__meta campana__meta--conversion">Meta: Conversión</span>
           </div>
           <div class="campana__cuerpo">
-            <div class="campo"><p class="campo__clave">Público</p><p class="campo__valor">Hombres con pareja</p></div>
-            <div class="campo"><p class="campo__clave">Canal</p><p class="campo__valor">Meta, segmentación por intereses y comportamiento</p></div>
-            <div class="campo"><p class="campo__clave">Concepto y CTA</p><p class="campo__valor"><strong>«El regalo que sí se va a poner»</strong>, copy final por ajustar</p></div>
+            <div class="campo">
+              <p class="campo__clave">Objetivo de negocio</p>
+              <p class="campo__valor">Vender el body a nivel nacional y capturar datos de hombres compradores para reutilizarlos en las próximas fechas de regalo.</p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Geo</p>
+              <p class="campo__valor">Instagram Medellín y el resto del territorio nacional.
+                <span class="limite">Fuera de Medellín va solo el body, sin mecánica Polles: el bono no se puede redimir a distancia.</span>
+              </p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Audiencia</p>
+              <p class="campo__valor">Hombres de 25 a 45 años, en relación o casados. Intereses en regalos y fechas especiales.</p>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Dos conjuntos</p>
+              <div class="flujo-mini">
+                <div class="rama">
+                  <p class="rama__clave">01 · Conversión directa</p>
+                  <div class="rama__pasos">
+                    <span class="rama__paso">Anuncio</span>
+                    <span class="rama__flecha">→</span>
+                    <span class="rama__paso">Landing con selector</span>
+                    <span class="rama__flecha">→</span>
+                    <span class="rama__fin">Venta</span>
+                  </div>
+                </div>
+                <div class="rama">
+                  <p class="rama__clave">02 · Retargeting con captura</p>
+                  <div class="rama__pasos">
+                    <span class="rama__paso">Quien no compró</span>
+                    <span class="rama__flecha">→</span>
+                    <span class="rama__paso">Formulario</span>
+                    <span class="rama__flecha">→</span>
+                    <span class="rama__fin">Base Hombres</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="campo">
+              <p class="campo__clave">Mensaje y CTA</p>
+              <p class="campo__valor"><strong>«¿No sabes qué regalar? En Fajitex encuentras el regalo perfecto.»</strong></p>
+              <div class="variantes">
+                <p class="variante">«¿Qué le vas a regalar a tu novia?»</p>
+                <p class="variante">«¿Qué le vas a regalar a mamá?»</p>
+              </div>
+            </div>
           </div>
-          <p class="campana__pie">Objetivo: captación de base masculina y conversión por regalo</p>
+          <div class="presupuesto presupuesto--medioalto">
+            <p class="presupuesto__clave">Prioridad de presupuesto</p>
+            <div class="barra-nivel" role="img" aria-label="Prioridad media alta, tres de cuatro">
+              <span class="on"></span><span class="on"></span><span class="on"></span><span></span>
+            </div>
+            <p class="presupuesto__texto">Media alta</p>
+          </div>
         </article>
+      </div>
 
-        <article class="campana">
-          <div class="campana__cabeza">
-            <p class="campana__num">03</p>
-            <h3 class="campana__nombre">Mis Curvas, Mis Reglas</h3>
-          </div>
-          <div class="campana__cuerpo">
-            <div class="campo"><p class="campo__clave">Público</p><p class="campo__valor">Mujeres de 35 años y más</p></div>
-            <div class="campo"><p class="campo__clave">Canal</p><p class="campo__valor">Facebook</p></div>
-            <div class="campo"><p class="campo__clave">Concepto y CTA</p><p class="campo__valor">Mismo concepto Polles con tono <strong>«date el gusto»</strong> en vez de tardeo</p></div>
-          </div>
-          <p class="campana__pie">Objetivo: awareness del segmento maduro</p>
-        </article>
-
-        <article class="campana">
-          <div class="campana__cabeza">
-            <p class="campana__num">04</p>
-            <h3 class="campana__nombre">Conversión directa</h3>
-          </div>
-          <div class="campana__cuerpo">
-            <div class="campo"><p class="campo__clave">Público</p><p class="campo__valor">Retargeting de las tres anteriores más intención de compra</p></div>
-            <div class="campo"><p class="campo__clave">Canal</p><p class="campo__valor">Meta y Google</p></div>
-            <div class="campo"><p class="campo__clave">Concepto y CTA</p><p class="campo__valor">Directo a landing con <strong>selector de body</strong></p></div>
-          </div>
-          <p class="campana__pie">Objetivo: venta</p>
-        </article>
+      <div class="tabla-envoltura revela">
+        <div class="tabla-titulo">
+          <strong>Reutilización futura de la base Hombres</strong>
+          <span>Lo que la campaña C deja montado para el resto del año. Es el activo que sobrevive a septiembre.</span>
+        </div>
+        <table class="datos">
+          <thead>
+            <tr><th scope="col">Fecha</th><th scope="col">Ángulo del mensaje</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="fecha">Día de las Madres</td><td>De la pareja a la mamá. «Ella también quiere sentirse bien», con foco en comodidad y en que sí se lo va a poner.</td></tr>
+            <tr><td class="fecha">San Valentín</td><td>Regreso al mismo comprador con la promesa que ya funcionó: «El regalo que sí se va a poner».</td></tr>
+            <tr><td class="fecha">Navidad</td><td>Regalo de fin de año y compra por volumen. Combos y tallas para regalar a más de una persona.</td></tr>
+            <tr><td class="fecha">Amor y Amistad del próximo año</td><td>Reactivación del comprador que ya acertó una vez: «El año pasado le atinaste. Este año, otra vez».</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="notas revela">
         <div class="nota">
-          <h4>La campaña 02 es la más valiosa a mediano plazo</h4>
-          <p>No por lo que vende en septiembre, sino porque deja una <strong>base masculina reutilizable</strong> para diciembre, San Valentín y cumpleaños. Recomiendo que el formulario pida el mínimo indispensable: nombre y un contacto, email o WhatsApp. Menos fricción es más leads, y con eso basta para nutrición futura en Klaviyo o Bitrix.</p>
+          <h4>Por qué A y B no comparten copy</h4>
+          <p>Es el mismo concepto y la misma colaboración, pero con público y tono aparte. Al segmento de 35 y más el «tardeo de sábado» le puede sonar a un lenguaje que no es el suyo. Bajo <strong>«Mis Curvas, Mis Reglas»</strong> el mismo match perfecto se traduce como disfrute sin culpa, sin la estética juvenil explícita.</p>
         </div>
         <div class="nota">
-          <h4>Por qué separar 20 a 35 de 35 y más</h4>
-          <p>Es el mismo concepto y la misma colaboración, pero con copy y canal aparte. Al segmento de 35 y más el «tardeo de sábado» le puede sonar a un lenguaje que no es el suyo. Bajo <strong>«Mis Curvas, Mis Reglas»</strong> el mismo match perfecto se traduce como disfrute sin culpa, sin la estética juvenil explícita.</p>
+          <h4>Por qué C sale de Medellín y deja la mecánica Polles</h4>
+          <p>El bono solo se redime en un punto físico, así que fuera del radio la colaboración no aplica. C se lleva el concepto y el producto al resto del país sin prometer algo que no se puede cumplir, y a cambio trae <strong>la base masculina</strong>, que es lo que queda vivo después de septiembre.</p>
         </div>
+      </div>
+
+      <div class="tabla-envoltura revela">
+        <div class="tabla-titulo">
+          <strong>Las tres de un vistazo</strong>
+          <span>Vista comparativa antes de pasar a la mensajería.</span>
+        </div>
+        <table class="datos">
+          <thead>
+            <tr><th scope="col">Campaña</th><th scope="col">Objetivo</th><th scope="col">Prioridad de presupuesto</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="campana-id">A</span> Tu Match Perfecto</td>
+              <td>Reconocimiento</td>
+              <td><span class="marca-nivel marca-nivel--alto">Alta</span></td>
+            </tr>
+            <tr>
+              <td><span class="campana-id">B</span> Mis Curvas, Mis Reglas</td>
+              <td>Reconocimiento y Remarketing</td>
+              <td><span class="marca-nivel">Media baja</span></td>
+            </tr>
+            <tr>
+              <td><span class="campana-id">C</span> El regalo perfecto</td>
+              <td>Conversión</td>
+              <td><span class="marca-nivel marca-nivel--medioalto">Media alta</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -1373,7 +1591,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .costo p { margin-top: 8px; font-size: .95rem; color: var(--tinta); }
 
 /* ============ Paid media ============ */
-.campanas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.campanas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
 .campana { display: flex; flex-direction: column; background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); }
 .campana__cabeza { padding: 20px 20px 18px; border-bottom: 1px solid var(--linea); background: var(--nata-alta); }
 .campana__num { font-family: var(--display); font-size: 1.5rem; color: var(--rojo); line-height: 1; }
@@ -1387,6 +1605,72 @@ ul { margin: 0; padding: 0; list-style: none; }
 .campana__pie { margin-top: auto; padding: 14px 20px; background: var(--nude); font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; color: var(--tinta); }
 .campana--marcada { border-color: var(--rojo); box-shadow: var(--sombra-alta); }
 .campana--marcada .campana__pie { background: var(--rojo); color: #FFF6F0; }
+
+/* ---- Tarjetas de campaña A, B y C ---- */
+.campana__letra {
+  font-family: var(--display); font-size: 2.6rem; line-height: .9; color: var(--rojo);
+}
+.campana__meta {
+  display: inline-block; margin-top: 12px;
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid var(--linea-firme); border-radius: 999px; padding: 4px 11px; color: var(--tinta-sec);
+}
+.campana__meta--conversion { border-color: var(--rojo); color: var(--rojo); }
+.limite {
+  display: block; margin-top: 8px; font-family: var(--mono); font-size: .72rem; line-height: 1.5;
+  padding: 8px 11px; border-radius: 6px; background: var(--nude); color: var(--tinta);
+}
+.marca-aprob--linea { display: inline-block; margin-top: 10px; }
+
+.subconjuntos { display: grid; gap: 10px; margin-top: 6px; }
+.subconjunto { padding: 12px 14px; border-radius: var(--radio-chico); background: var(--nata-alta); border: 1px solid var(--linea); }
+.subconjunto__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rojo); }
+.subconjunto p { margin-top: 4px; font-size: .92rem; }
+
+.flujo-mini { display: grid; gap: 12px; margin-top: 6px; }
+.rama { padding: 13px 15px; border-radius: var(--radio-chico); border: 1px dashed var(--linea-firme); }
+.rama__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rojo); }
+.rama__pasos { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-top: 7px; }
+.rama__paso { font-size: .88rem; font-weight: 500; }
+.rama__flecha { color: var(--rojo); font-size: .9rem; line-height: 1; }
+.rama__fin { font-family: var(--titular); font-weight: 800; font-size: .92rem; color: var(--rojo); }
+
+.variantes { margin-top: 8px; display: grid; gap: 6px; }
+.variante { font-size: .89rem; font-style: italic; color: var(--tinta-sec); padding-left: 12px; border-left: 2px solid var(--nude-hondo); }
+
+/* ---- Prioridad de presupuesto: barra, color y texto ---- */
+.presupuesto { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--linea); background: var(--nata-alta); }
+.presupuesto__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.barra-nivel { display: flex; gap: 4px; margin-top: 8px; }
+.barra-nivel span { flex: 1 1 0; height: 9px; border-radius: 3px; background: var(--linea); }
+.barra-nivel span.on { background: var(--nude-hondo); }
+.presupuesto--alto .barra-nivel span.on { background: var(--rojo); }
+.presupuesto--medioalto .barra-nivel span.on { background: var(--rojo); opacity: .72; }
+.presupuesto__texto {
+  display: inline-block; margin-top: 10px; font-family: var(--titular); font-weight: 800; font-size: .92rem;
+  padding: 4px 12px; border-radius: 999px; background: var(--nude); color: var(--tinta);
+}
+.presupuesto--alto .presupuesto__texto { background: var(--rojo); color: #FFF6F0; }
+.presupuesto--medioalto .presupuesto__texto { background: transparent; color: var(--rojo); border: 1.5px solid var(--rojo); }
+
+/* ---- Tablas de la sección ---- */
+.tabla-envoltura { overflow-x: auto; margin-top: 26px; border: 1px solid var(--linea); border-radius: var(--radio); background: var(--nata); }
+.tabla-titulo { padding: 15px 22px; border-bottom: 1px solid var(--linea); background: var(--nude); }
+.tabla-titulo strong { font-family: var(--titular); font-weight: 800; font-size: 1.05rem; }
+.tabla-titulo span { display: block; margin-top: 3px; font-size: .92rem; color: var(--tinta); opacity: .8; }
+table.datos { width: 100%; border-collapse: collapse; font-size: .95rem; }
+table.datos th {
+  text-align: left; font-family: var(--mono); font-weight: 500; font-size: .66rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec);
+  padding: 13px 22px; border-bottom: 1px solid var(--linea); white-space: nowrap;
+}
+table.datos td { padding: 14px 22px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+table.datos tr:last-child td { border-bottom: 0; }
+table.datos .fecha { font-family: var(--titular); font-weight: 800; white-space: nowrap; }
+table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-size: 1.15rem; }
+.marca-nivel { font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: var(--nude); color: var(--tinta); white-space: nowrap; }
+.marca-nivel--alto { background: var(--rojo); color: #FFF6F0; }
+.marca-nivel--medioalto { background: transparent; border: 1.5px solid var(--rojo); color: var(--rojo); }
 
 .notas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 28px; }
 .nota { padding: 22px 24px; border-radius: var(--radio); border: 1px solid var(--linea); background: var(--nata); }
@@ -1512,7 +1796,8 @@ html { scroll-behavior: smooth; }
 @media (max-width: 1100px) {
   .contenedor { width: calc(100% - 48px); }
   .concepto__rejilla { grid-template-columns: 1fr; gap: 36px; }
-  .galeria, .campanas, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: repeat(2, 1fr); }
+  .galeria, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: repeat(2, 1fr); }
+  .campanas { grid-template-columns: 1fr; }
   .linea-tiempo::before { display: none; }
   .decisiones, .notas, .planb__cols, .aviso__cuerpo, .activacion { grid-template-columns: 1fr; }
 }
@@ -1526,7 +1811,7 @@ html { scroll-behavior: smooth; }
   .seccion__encabezado { grid-template-columns: 1fr; gap: 10px; }
   .seccion__numero { font-size: 2.4rem; }
   .seccion__titulo { font-size: 2rem; }
-  .galeria, .campanas, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: 1fr; }
+  .galeria, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: 1fr; }
   .ruta { grid-template-columns: 1fr; }
   .marco--tira .marco__lienzo, .marco--tira .marco__foto { aspect-ratio: 16 / 10; }
   .flujo { flex-wrap: wrap; }
@@ -1812,74 +2097,225 @@ html { scroll-behavior: smooth; }
         &lt;p class="seccion__numero">04&lt;/p>
         &lt;div>
           &lt;p class="eyebrow">Arquitectura de paid media&lt;/p>
-          &lt;h2 class="seccion__titulo">Cuatro campañas, un solo concepto&lt;/h2>
-          &lt;p class="seccion__bajada">Tres de captación con públicos separados y una de cierre que recoge todo lo anterior.&lt;/p>
+          &lt;h2 class="seccion__titulo">Tres campañas, un solo concepto&lt;/h2>
+          &lt;p class="seccion__bajada">Una de reconocimiento en Medellín, una que mezcla reconocimiento y remarketing sobre la base propia, y una de conversión nacional que además captura base masculina.&lt;/p>
         &lt;/div>
       &lt;/div>
 
       &lt;div class="campanas revela">
+
         &lt;article class="campana">
           &lt;div class="campana__cabeza">
-            &lt;p class="campana__num">01&lt;/p>
-            &lt;h3 class="campana__nombre">Lanzamiento del body&lt;/h3>
+            &lt;p class="campana__letra">A&lt;/p>
+            &lt;h3 class="campana__nombre">Tu Match Perfecto&lt;/h3>
+            &lt;span class="campana__meta">Meta: Reconocimiento&lt;/span>
           &lt;/div>
           &lt;div class="campana__cuerpo">
-            &lt;div class="campo">&lt;p class="campo__clave">Público&lt;/p>&lt;p class="campo__valor">Mujeres de 20 a 35 años&lt;/p>&lt;/div>
-            &lt;div class="campo">&lt;p class="campo__clave">Canal&lt;/p>&lt;p class="campo__valor">Meta e Instagram. Reels, orgánico y pauta&lt;/p>&lt;/div>
-            &lt;div class="campo">&lt;p class="campo__clave">Concepto y CTA&lt;/p>&lt;p class="campo__valor">&lt;strong>«Tu Match Perfecto»&lt;/strong>, en tono tardeo de sábado&lt;/p>&lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Objetivo de negocio&lt;/p>
+              &lt;p class="campo__valor">Impactar audiencia nueva con el body como producto de alta demanda, apalancado en la colaboración con Polles.&lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Geo&lt;/p>
+              &lt;p class="campo__valor">Medellín y 40 km a la redonda
+                &lt;span class="limite">Restricción: el radio lo fija la vigencia de la promoción física. Fuera de ese rango el bono no se puede redimir.&lt;/span>
+              &lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Audiencia&lt;/p>
+              &lt;p class="campo__valor">Mujeres de 20 a 35 años. Intereses en moda, wellness, food y repostería, lifestyle.&lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Red y ubicaciones&lt;/p>
+              &lt;p class="campo__valor">Instagram. Reels y Stories.&lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Mensaje y CTA&lt;/p>
+              &lt;p class="campo__valor">&lt;strong>«Tu Match Perfecto»&lt;/strong>&lt;/p>
+            &lt;/div>
           &lt;/div>
-          &lt;p class="campana__pie">Objetivo: awareness y tráfico a landing&lt;/p>
+          &lt;div class="presupuesto presupuesto--alto">
+            &lt;p class="presupuesto__clave">Prioridad de presupuesto&lt;/p>
+            &lt;div class="barra-nivel" role="img" aria-label="Prioridad alta, cuatro de cuatro">
+              &lt;span class="on">&lt;/span>&lt;span class="on">&lt;/span>&lt;span class="on">&lt;/span>&lt;span class="on">&lt;/span>
+            &lt;/div>
+            &lt;p class="presupuesto__texto">Alta&lt;/p>
+          &lt;/div>
+        &lt;/article>
+
+        &lt;article class="campana">
+          &lt;div class="campana__cabeza">
+            &lt;p class="campana__letra">B&lt;/p>
+            &lt;h3 class="campana__nombre">Mis Curvas, Mis Reglas&lt;/h3>
+            &lt;span class="campana__meta">Meta: Reconocimiento y Remarketing&lt;/span>
+          &lt;/div>
+          &lt;div class="campana__cuerpo">
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Objetivo de negocio&lt;/p>
+              &lt;p class="campo__valor">Dar visibilidad a las clientas actuales de 35 años y más, incentivar que se unan a la comunidad «Mis Curvas, Mis Reglas» y activar el incentivo 2x3.&lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Dos conjuntos&lt;/p>
+              &lt;div class="subconjuntos">
+                &lt;div class="subconjunto">
+                  &lt;p class="subconjunto__clave">01 · Reconocimiento&lt;/p>
+                  &lt;p>Público similar construido sobre la base propia. Audiencia nueva con el mismo perfil de la clienta que ya compra.&lt;/p>
+                &lt;/div>
+                &lt;div class="subconjunto">
+                  &lt;p class="subconjunto__clave">02 · Remarketing&lt;/p>
+                  &lt;p>Base propia de clientas de 35 años y más. Gente que ya conoce la marca y solo necesita el gancho.&lt;/p>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Geo&lt;/p>
+              &lt;p class="campo__valor">Por definir
+                &lt;span class="pendiente">Pendiente: depende de si el 2x3 se activa en tienda física o solo en canal propio&lt;/span>
+              &lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Red y ubicaciones&lt;/p>
+              &lt;p class="campo__valor">Por definir
+                &lt;span class="pendiente">Pendiente: propuesta de Facebook por perfil de edad, sin confirmar&lt;/span>
+              &lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Mensaje y CTA&lt;/p>
+              &lt;p class="campo__valor">Mismo concepto &lt;strong>«Match Perfecto»&lt;/strong> en tono «date el gusto», con el &lt;strong>2x3&lt;/strong> como gancho.
+                &lt;span class="marca-aprob marca-aprob--linea">El 2x3 requiere aprobación&lt;/span>
+              &lt;/p>
+            &lt;/div>
+          &lt;/div>
+          &lt;div class="presupuesto">
+            &lt;p class="presupuesto__clave">Prioridad de presupuesto&lt;/p>
+            &lt;div class="barra-nivel" role="img" aria-label="Prioridad media baja, dos de cuatro">
+              &lt;span class="on">&lt;/span>&lt;span class="on">&lt;/span>&lt;span>&lt;/span>&lt;span>&lt;/span>
+            &lt;/div>
+            &lt;p class="presupuesto__texto">Media baja&lt;/p>
+          &lt;/div>
         &lt;/article>
 
         &lt;article class="campana campana--marcada">
           &lt;div class="campana__cabeza">
-            &lt;p class="campana__num">02&lt;/p>
-            &lt;h3 class="campana__nombre">Regalo para ellas&lt;/h3>
+            &lt;p class="campana__letra">C&lt;/p>
+            &lt;h3 class="campana__nombre">El regalo perfecto&lt;/h3>
+            &lt;span class="campana__meta campana__meta--conversion">Meta: Conversión&lt;/span>
           &lt;/div>
           &lt;div class="campana__cuerpo">
-            &lt;div class="campo">&lt;p class="campo__clave">Público&lt;/p>&lt;p class="campo__valor">Hombres con pareja&lt;/p>&lt;/div>
-            &lt;div class="campo">&lt;p class="campo__clave">Canal&lt;/p>&lt;p class="campo__valor">Meta, segmentación por intereses y comportamiento&lt;/p>&lt;/div>
-            &lt;div class="campo">&lt;p class="campo__clave">Concepto y CTA&lt;/p>&lt;p class="campo__valor">&lt;strong>«El regalo que sí se va a poner»&lt;/strong>, copy final por ajustar&lt;/p>&lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Objetivo de negocio&lt;/p>
+              &lt;p class="campo__valor">Vender el body a nivel nacional y capturar datos de hombres compradores para reutilizarlos en las próximas fechas de regalo.&lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Geo&lt;/p>
+              &lt;p class="campo__valor">Instagram Medellín y el resto del territorio nacional.
+                &lt;span class="limite">Fuera de Medellín va solo el body, sin mecánica Polles: el bono no se puede redimir a distancia.&lt;/span>
+              &lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Audiencia&lt;/p>
+              &lt;p class="campo__valor">Hombres de 25 a 45 años, en relación o casados. Intereses en regalos y fechas especiales.&lt;/p>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Dos conjuntos&lt;/p>
+              &lt;div class="flujo-mini">
+                &lt;div class="rama">
+                  &lt;p class="rama__clave">01 · Conversión directa&lt;/p>
+                  &lt;div class="rama__pasos">
+                    &lt;span class="rama__paso">Anuncio&lt;/span>
+                    &lt;span class="rama__flecha">→&lt;/span>
+                    &lt;span class="rama__paso">Landing con selector&lt;/span>
+                    &lt;span class="rama__flecha">→&lt;/span>
+                    &lt;span class="rama__fin">Venta&lt;/span>
+                  &lt;/div>
+                &lt;/div>
+                &lt;div class="rama">
+                  &lt;p class="rama__clave">02 · Retargeting con captura&lt;/p>
+                  &lt;div class="rama__pasos">
+                    &lt;span class="rama__paso">Quien no compró&lt;/span>
+                    &lt;span class="rama__flecha">→&lt;/span>
+                    &lt;span class="rama__paso">Formulario&lt;/span>
+                    &lt;span class="rama__flecha">→&lt;/span>
+                    &lt;span class="rama__fin">Base Hombres&lt;/span>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div class="campo">
+              &lt;p class="campo__clave">Mensaje y CTA&lt;/p>
+              &lt;p class="campo__valor">&lt;strong>«¿No sabes qué regalar? En Fajitex encuentras el regalo perfecto.»&lt;/strong>&lt;/p>
+              &lt;div class="variantes">
+                &lt;p class="variante">«¿Qué le vas a regalar a tu novia?»&lt;/p>
+                &lt;p class="variante">«¿Qué le vas a regalar a mamá?»&lt;/p>
+              &lt;/div>
+            &lt;/div>
           &lt;/div>
-          &lt;p class="campana__pie">Objetivo: captación de base masculina y conversión por regalo&lt;/p>
+          &lt;div class="presupuesto presupuesto--medioalto">
+            &lt;p class="presupuesto__clave">Prioridad de presupuesto&lt;/p>
+            &lt;div class="barra-nivel" role="img" aria-label="Prioridad media alta, tres de cuatro">
+              &lt;span class="on">&lt;/span>&lt;span class="on">&lt;/span>&lt;span class="on">&lt;/span>&lt;span>&lt;/span>
+            &lt;/div>
+            &lt;p class="presupuesto__texto">Media alta&lt;/p>
+          &lt;/div>
         &lt;/article>
+      &lt;/div>
 
-        &lt;article class="campana">
-          &lt;div class="campana__cabeza">
-            &lt;p class="campana__num">03&lt;/p>
-            &lt;h3 class="campana__nombre">Mis Curvas, Mis Reglas&lt;/h3>
-          &lt;/div>
-          &lt;div class="campana__cuerpo">
-            &lt;div class="campo">&lt;p class="campo__clave">Público&lt;/p>&lt;p class="campo__valor">Mujeres de 35 años y más&lt;/p>&lt;/div>
-            &lt;div class="campo">&lt;p class="campo__clave">Canal&lt;/p>&lt;p class="campo__valor">Facebook&lt;/p>&lt;/div>
-            &lt;div class="campo">&lt;p class="campo__clave">Concepto y CTA&lt;/p>&lt;p class="campo__valor">Mismo concepto Polles con tono &lt;strong>«date el gusto»&lt;/strong> en vez de tardeo&lt;/p>&lt;/div>
-          &lt;/div>
-          &lt;p class="campana__pie">Objetivo: awareness del segmento maduro&lt;/p>
-        &lt;/article>
-
-        &lt;article class="campana">
-          &lt;div class="campana__cabeza">
-            &lt;p class="campana__num">04&lt;/p>
-            &lt;h3 class="campana__nombre">Conversión directa&lt;/h3>
-          &lt;/div>
-          &lt;div class="campana__cuerpo">
-            &lt;div class="campo">&lt;p class="campo__clave">Público&lt;/p>&lt;p class="campo__valor">Retargeting de las tres anteriores más intención de compra&lt;/p>&lt;/div>
-            &lt;div class="campo">&lt;p class="campo__clave">Canal&lt;/p>&lt;p class="campo__valor">Meta y Google&lt;/p>&lt;/div>
-            &lt;div class="campo">&lt;p class="campo__clave">Concepto y CTA&lt;/p>&lt;p class="campo__valor">Directo a landing con &lt;strong>selector de body&lt;/strong>&lt;/p>&lt;/div>
-          &lt;/div>
-          &lt;p class="campana__pie">Objetivo: venta&lt;/p>
-        &lt;/article>
+      &lt;div class="tabla-envoltura revela">
+        &lt;div class="tabla-titulo">
+          &lt;strong>Reutilización futura de la base Hombres&lt;/strong>
+          &lt;span>Lo que la campaña C deja montado para el resto del año. Es el activo que sobrevive a septiembre.&lt;/span>
+        &lt;/div>
+        &lt;table class="datos">
+          &lt;thead>
+            &lt;tr>&lt;th scope="col">Fecha&lt;/th>&lt;th scope="col">Ángulo del mensaje&lt;/th>&lt;/tr>
+          &lt;/thead>
+          &lt;tbody>
+            &lt;tr>&lt;td class="fecha">Día de las Madres&lt;/td>&lt;td>De la pareja a la mamá. «Ella también quiere sentirse bien», con foco en comodidad y en que sí se lo va a poner.&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td class="fecha">San Valentín&lt;/td>&lt;td>Regreso al mismo comprador con la promesa que ya funcionó: «El regalo que sí se va a poner».&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td class="fecha">Navidad&lt;/td>&lt;td>Regalo de fin de año y compra por volumen. Combos y tallas para regalar a más de una persona.&lt;/td>&lt;/tr>
+            &lt;tr>&lt;td class="fecha">Amor y Amistad del próximo año&lt;/td>&lt;td>Reactivación del comprador que ya acertó una vez: «El año pasado le atinaste. Este año, otra vez».&lt;/td>&lt;/tr>
+          &lt;/tbody>
+        &lt;/table>
       &lt;/div>
 
       &lt;div class="notas revela">
         &lt;div class="nota">
-          &lt;h4>La campaña 02 es la más valiosa a mediano plazo&lt;/h4>
-          &lt;p>No por lo que vende en septiembre, sino porque deja una &lt;strong>base masculina reutilizable&lt;/strong> para diciembre, San Valentín y cumpleaños. Recomiendo que el formulario pida el mínimo indispensable: nombre y un contacto, email o WhatsApp. Menos fricción es más leads, y con eso basta para nutrición futura en Klaviyo o Bitrix.&lt;/p>
+          &lt;h4>Por qué A y B no comparten copy&lt;/h4>
+          &lt;p>Es el mismo concepto y la misma colaboración, pero con público y tono aparte. Al segmento de 35 y más el «tardeo de sábado» le puede sonar a un lenguaje que no es el suyo. Bajo &lt;strong>«Mis Curvas, Mis Reglas»&lt;/strong> el mismo match perfecto se traduce como disfrute sin culpa, sin la estética juvenil explícita.&lt;/p>
         &lt;/div>
         &lt;div class="nota">
-          &lt;h4>Por qué separar 20 a 35 de 35 y más&lt;/h4>
-          &lt;p>Es el mismo concepto y la misma colaboración, pero con copy y canal aparte. Al segmento de 35 y más el «tardeo de sábado» le puede sonar a un lenguaje que no es el suyo. Bajo &lt;strong>«Mis Curvas, Mis Reglas»&lt;/strong> el mismo match perfecto se traduce como disfrute sin culpa, sin la estética juvenil explícita.&lt;/p>
+          &lt;h4>Por qué C sale de Medellín y deja la mecánica Polles&lt;/h4>
+          &lt;p>El bono solo se redime en un punto físico, así que fuera del radio la colaboración no aplica. C se lleva el concepto y el producto al resto del país sin prometer algo que no se puede cumplir, y a cambio trae &lt;strong>la base masculina&lt;/strong>, que es lo que queda vivo después de septiembre.&lt;/p>
         &lt;/div>
+      &lt;/div>
+
+      &lt;div class="tabla-envoltura revela">
+        &lt;div class="tabla-titulo">
+          &lt;strong>Las tres de un vistazo&lt;/strong>
+          &lt;span>Vista comparativa antes de pasar a la mensajería.&lt;/span>
+        &lt;/div>
+        &lt;table class="datos">
+          &lt;thead>
+            &lt;tr>&lt;th scope="col">Campaña&lt;/th>&lt;th scope="col">Objetivo&lt;/th>&lt;th scope="col">Prioridad de presupuesto&lt;/th>&lt;/tr>
+          &lt;/thead>
+          &lt;tbody>
+            &lt;tr>
+              &lt;td>&lt;span class="campana-id">A&lt;/span> Tu Match Perfecto&lt;/td>
+              &lt;td>Reconocimiento&lt;/td>
+              &lt;td>&lt;span class="marca-nivel marca-nivel--alto">Alta&lt;/span>&lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td>&lt;span class="campana-id">B&lt;/span> Mis Curvas, Mis Reglas&lt;/td>
+              &lt;td>Reconocimiento y Remarketing&lt;/td>
+              &lt;td>&lt;span class="marca-nivel">Media baja&lt;/span>&lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td>&lt;span class="campana-id">C&lt;/span> El regalo perfecto&lt;/td>
+              &lt;td>Conversión&lt;/td>
+              &lt;td>&lt;span class="marca-nivel marca-nivel--medioalto">Media alta&lt;/span>&lt;/td>
+            &lt;/tr>
+          &lt;/tbody>
+        &lt;/table>
       &lt;/div>
     &lt;/div>
   &lt;/section>
