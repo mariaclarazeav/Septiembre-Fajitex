@@ -425,21 +425,85 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 .nota p strong { color: var(--tinta); font-weight: 600; }
 
 /* ============ Mensajeria ============ */
-.linea-tiempo { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 8px; }
-.linea-tiempo::before { content: ""; position: absolute; top: 27px; left: 6%; right: 6%; height: 2px; background: var(--nude-hondo); }
-.envio { position: relative; background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); padding: 68px 22px 22px; box-shadow: var(--sombra); }
-.envio__punto {
-  position: absolute; top: 16px; left: 22px; width: 42px; height: 42px; border-radius: 50%;
+.hitos {
+  --paso: 22px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--paso); position: relative;
+}
+.hito {
+  position: relative; background: var(--nata); border: 1px solid var(--linea);
+  border-radius: var(--radio); padding: 70px 22px 22px; box-shadow: var(--sombra);
+  display: flex; flex-direction: column;
+}
+/* riel que une los hitos de cada fila */
+.hito::after {
+  content: ""; position: absolute; top: 38px; right: calc(var(--paso) * -1);
+  width: var(--paso); height: 2px; background: var(--nude-hondo);
+}
+.hito:nth-child(3n)::after { display: none; }
+.hito__punto {
+  position: absolute; top: 18px; left: 22px; width: 40px; height: 40px; border-radius: 50%;
   background: var(--rojo); color: #FFF6F0; display: grid; place-items: center;
-  font-family: var(--display); font-size: 1.2rem; line-height: 1;
+  font-family: var(--display); font-size: 1.15rem; line-height: 1;
   box-shadow: 0 0 0 6px var(--crema);
 }
-.envio__nombre { font-size: 1.2rem; }
-.envio__meta { margin-top: 12px; display: grid; gap: 10px; }
-.envio__meta div { display: grid; gap: 3px; }
-.envio__meta dt { font-family: var(--mono); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
-.envio__meta dd { margin: 0; font-size: .95rem; }
-.pendiente { display: inline-block; margin-top: 8px; font-family: var(--mono); font-size: .72rem; padding: 3px 9px; border-radius: 6px; background: var(--nude); color: var(--tinta); }
+.hito__nombre { font-size: 1.18rem; }
+.hito__timing {
+  display: inline-block; margin-top: 8px;
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .08em;
+  color: var(--tinta-sec); border: 1px solid var(--linea-firme); border-radius: 999px; padding: 3px 10px;
+}
+.canales { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.canal {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px;
+}
+.canal svg { width: 12px; height: 12px; flex: 0 0 auto; }
+.canal--email { background: var(--rojo); color: #FFF6F0; }
+.canal--whatsapp { background: var(--menta); color: #FFFFFF; }
+:root[data-theme="dark"] .canal--whatsapp { color: #08211D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .canal--whatsapp { color: #08211D; } }
+.canal--sms { background: var(--nude-hondo); color: var(--tinta); }
+
+.hito__segmento { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--linea); }
+.hito__segmento .clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.hito__segmento p { margin-top: 5px; font-size: .93rem; }
+
+.copias { display: grid; gap: 10px; margin-top: 16px; }
+.copia { padding: 13px 15px; border-radius: var(--radio-chico); font-size: .9rem; line-height: 1.55; }
+.copia__canal { font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+.copia--email { background: var(--nata-alta); border: 1px solid var(--linea); border-left: 3px solid var(--rojo); }
+.copia--email .copia__canal { color: var(--rojo); }
+.copia__asunto { margin-top: 6px; font-family: var(--titular); font-weight: 800; }
+.copia__cuerpo { margin-top: 6px; color: var(--tinta-sec); }
+.copia--whatsapp { background: var(--menta-piso); border: 1px solid var(--menta); border-radius: var(--radio-chico) var(--radio-chico) var(--radio-chico) 3px; }
+.copia--whatsapp .copia__canal { color: var(--menta); }
+.copia--whatsapp p:last-child { margin-top: 6px; }
+.copia--sms { background: var(--nude); color: var(--tinta); font-family: var(--mono); font-size: .82rem; }
+.copia--sms .copia__canal { color: var(--tinta); opacity: .7; font-family: var(--mono); }
+.copia--sms p:last-child { margin-top: 6px; }
+.copia .pendiente { margin-top: 8px; }
+
+.variante-copia { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--linea-firme); }
+.variante-copia .clave { font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-sec); }
+.variante-copia p { margin-top: 4px; font-style: italic; }
+
+/* el ultimo llamado es el hito de mayor urgencia */
+.hito--urgente { border: 2px solid var(--rojo); box-shadow: var(--sombra-alta); }
+.hito--urgente .hito__punto { box-shadow: 0 0 0 6px var(--crema), 0 0 0 8px var(--rojo); }
+.alerta-urgencia {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
+  background: var(--rojo); color: #FFF6F0; padding: 4px 11px; border-radius: 999px;
+}
+.alerta-urgencia svg { width: 12px; height: 12px; }
+
+.nota-planb-hito {
+  margin-top: 12px; padding: 12px 14px; border-radius: var(--radio-chico);
+  background: var(--menta-piso); border-left: 3px solid var(--menta); font-size: .89rem;
+}
+.nota-planb-hito .clave { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--menta); }
+.nota-planb-hito p { margin-top: 5px; }
 
 /* ============ Plan B ============ */
 .planb { background: var(--menta-piso); }
@@ -542,9 +606,11 @@ html { scroll-behavior: smooth; }
 @media (max-width: 1100px) {
   .contenedor { width: calc(100% - 48px); }
   .concepto__rejilla { grid-template-columns: 1fr; gap: 36px; }
-  .galeria, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: repeat(2, 1fr); }
+  .galeria, .porque__lista, .fichas { grid-template-columns: repeat(2, 1fr); }
   .campanas { grid-template-columns: 1fr; }
-  .linea-tiempo::before { display: none; }
+  .hitos { grid-template-columns: repeat(2, 1fr); }
+  .hito:nth-child(3n)::after { display: block; }
+  .hito:nth-child(2n)::after { display: none; }
   .decisiones, .notas, .planb__cols, .aviso__cuerpo, .activacion { grid-template-columns: 1fr; }
 }
 @media (max-width: 940px) {
@@ -557,7 +623,9 @@ html { scroll-behavior: smooth; }
   .seccion__encabezado { grid-template-columns: 1fr; gap: 10px; }
   .seccion__numero { font-size: 2.4rem; }
   .seccion__titulo { font-size: 2rem; }
-  .galeria, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: 1fr; }
+  .galeria, .porque__lista, .fichas { grid-template-columns: 1fr; }
+  .hitos { grid-template-columns: 1fr; }
+  .hito::after { display: none !important; }
   .ruta { grid-template-columns: 1fr; }
   .marco--tira .marco__lienzo, .marco--tira .marco__foto { aspect-ratio: 16 / 10; }
   .flujo { flex-wrap: wrap; }
@@ -1072,47 +1140,155 @@ html { scroll-behavior: smooth; }
         <p class="seccion__numero">05</p>
         <div>
           <p class="eyebrow">Email, SMS y WhatsApp</p>
-          <h2 class="seccion__titulo">Cuatro envíos escalonados, del misterio a la urgencia</h2>
-          <p class="seccion__bajada">El contenido está definido para email. SMS y WhatsApp replican solo los envíos 2 y 4, que son los que cargan la mecánica y la urgencia.</p>
+          <h2 class="seccion__titulo">Seis envíos, del misterio a la recuperación</h2>
+          <p class="seccion__bajada">La comunidad de WhatsApp se entera primero, el email carga el relato y el SMS cierra con la urgencia. Cada hito lleva el copy real, no un ejemplo genérico.</p>
         </div>
       </div>
 
-      <div class="linea-tiempo revela">
-        <article class="envio">
-          <p class="envio__punto">01</p>
-          <h3 class="envio__nombre">Teaser</h3>
-          <dl class="envio__meta">
-            <div><dt>Segmento</dt><dd>Toda la base</dd></div>
-            <div><dt>Canal</dt><dd>Email</dd></div>
-            <div><dt>Contenido</dt><dd>«Algo dulce está por pasar». Sin revelar todavía la marca aliada.</dd></div>
-          </dl>
+      <div class="hitos revela">
+
+        <article class="hito">
+          <p class="hito__punto">01</p>
+          <h3 class="hito__nombre">Teaser</h3>
+          <p class="hito__timing">7 a 10 días antes</p>
+          <div class="canales">
+            <span class="canal canal--whatsapp"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.6a6.4 6.4 0 00-5.5 9.7L1.6 14.4l3.2-.85A6.4 6.4 0 108 1.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> WhatsApp</span>
+            <span class="canal canal--email"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Email</span>
+          </div>
+          <div class="hito__segmento">
+            <p class="clave">Segmento</p>
+            <p>Comunidad de WhatsApp primero, luego toda la base.</p>
+          </div>
+          <div class="copias">
+            <div class="copia copia--whatsapp">
+              <p class="copia__canal">WhatsApp</p>
+              <p>Algo dulce está a punto de pasar 👀🍪 Estamos preparando una colaboración que combina lo que amas ponerte con lo que amas comerte. Muy pronto lo cuentas tú primero, porque eres parte de la comunidad.</p>
+            </div>
+            <div class="copia copia--email">
+              <p class="copia__canal">Email</p>
+              <p class="copia__asunto">Algo dulce está por pasar 👀</p>
+              <p class="copia__cuerpo">Estamos cocinando algo diferente. Una colaboración que junta dos cosas que ya amas: tu figura y tu antojo de sábado. Muy pronto te contamos todo. Mientras tanto, prepárate.</p>
+            </div>
+          </div>
         </article>
-        <article class="envio">
-          <p class="envio__punto">02</p>
-          <h3 class="envio__nombre">Lanzamiento</h3>
-          <dl class="envio__meta">
-            <div><dt>Segmento</dt><dd>Toda la base</dd></div>
-            <div><dt>Canal</dt><dd>Email y WhatsApp</dd></div>
-            <div><dt>Contenido</dt><dd>Reveal de la colaboración y explicación de la mecánica del bono cruzado.</dd></div>
-          </dl>
+
+        <article class="hito">
+          <p class="hito__punto">02</p>
+          <h3 class="hito__nombre">Lanzamiento oficial</h3>
+          <p class="hito__timing">Día del lanzamiento</p>
+          <div class="canales">
+            <span class="canal canal--email"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Email</span>
+            <span class="canal canal--whatsapp"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.6a6.4 6.4 0 00-5.5 9.7L1.6 14.4l3.2-.85A6.4 6.4 0 108 1.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> WhatsApp</span>
+          </div>
+          <div class="hito__segmento">
+            <p class="clave">Segmento</p>
+            <p>Toda la base.</p>
+          </div>
+          <div class="copias">
+            <div class="copia copia--email">
+              <p class="copia__canal">Email</p>
+              <p class="copia__asunto">Tu Match Perfecto ya llegó 💗 Fajitex x Polles Bakeshop</p>
+              <p class="copia__cuerpo">Así como una galleta perfecta es crujiente por fuera y suave por dentro, tu match perfecto sostiene tu figura mientras disfrutas la vida sin culpa. Nos unimos con Polles Bakeshop para que vivas la tarde de sábado completa: tu body Fajitex y tu antojo favorito, con beneficios para las dos cosas.</p>
+            </div>
+            <div class="copia copia--whatsapp">
+              <p class="copia__canal">WhatsApp</p>
+              <p>Ya es oficial 💗 Fajitex x Polles Bakeshop. Compra tu body y recibe un bono para Polles. Compra en Polles y recibe un descuento en tu body. Tu match perfecto, completo.</p>
+            </div>
+          </div>
         </article>
-        <article class="envio">
-          <p class="envio__punto">03</p>
-          <h3 class="envio__nombre">Fajas de Novia</h3>
-          <dl class="envio__meta">
-            <div><dt>Segmento</dt><dd>Interés o compra previa en la categoría</dd></div>
-            <div><dt>Canal</dt><dd>Email</dd></div>
-            <div><dt>Contenido</dt><dd>Descuento específico que enlaza el match perfecto con el match de pareja.<span class="pendiente">Pendiente: porcentaje sujeto a la condición comercial aprobada</span></dd></div>
-          </dl>
+
+        <article class="hito">
+          <p class="hito__punto">03</p>
+          <h3 class="hito__nombre">Segmento Novias</h3>
+          <p class="hito__timing">2 a 3 días después</p>
+          <div class="canales">
+            <span class="canal canal--email"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Email</span>
+          </div>
+          <div class="hito__segmento">
+            <p class="clave">Segmento</p>
+            <p>Clientas con interés o compra previa en categoría Novia, y ticket alto.</p>
+          </div>
+          <div class="copias">
+            <div class="copia copia--email">
+              <p class="copia__canal">Email</p>
+              <p class="copia__asunto">Tu match perfecto también aplica para el suyo 💍</p>
+              <p class="copia__cuerpo">Si ya encontraste a tu match, encuentra también el body que te acompaña el día más importante. Por tiempo limitado, [X]% de descuento en nuestra categoría de Fajas de Novia.</p>
+              <span class="marca-aprob marca-aprob--linea">El [X]% requiere aprobación</span>
+            </div>
+          </div>
         </article>
-        <article class="envio">
-          <p class="envio__punto">04</p>
-          <h3 class="envio__nombre">Último llamado</h3>
-          <dl class="envio__meta">
-            <div><dt>Segmento</dt><dd>Quienes no abrieron y carritos abandonados</dd></div>
-            <div><dt>Canal</dt><dd>Email y SMS</dd></div>
-            <div><dt>Contenido</dt><dd>Urgencia y recordatorio de que el bono Polles vence.</dd></div>
-          </dl>
+
+        <article class="hito">
+          <p class="hito__punto">04</p>
+          <h3 class="hito__nombre">Campaña regalo, espejo hombres</h3>
+          <p class="hito__timing">Semana 2</p>
+          <div class="canales">
+            <span class="canal canal--email"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Email</span>
+            <span class="canal canal--whatsapp"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.6a6.4 6.4 0 00-5.5 9.7L1.6 14.4l3.2-.85A6.4 6.4 0 108 1.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> WhatsApp</span>
+          </div>
+          <div class="hito__segmento">
+            <p class="clave">Segmento</p>
+            <p>Base masculina capturada por la campaña C, y hombres con compras previas de regalo.</p>
+          </div>
+          <div class="copias">
+            <div class="copia copia--email">
+              <p class="copia__canal">Email y WhatsApp</p>
+              <p class="copia__cuerpo">¿No sabes qué regalarle? Ya lo encontraste. En Fajitex tenemos el regalo perfecto para ella. Cómodo, elegante, y con un extra dulce de Polles Bakeshop incluido.</p>
+              <div class="variante-copia">
+                <p class="clave">Variante secundaria</p>
+                <p>¿Qué le vas a regalar a mamá? En Fajitex encuentras el regalo perfecto.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="hito hito--urgente">
+          <p class="hito__punto">05</p>
+          <h3 class="hito__nombre">Último llamado</h3>
+          <p class="hito__timing">48 horas antes del 19</p>
+          <span class="alerta-urgencia"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.6V8l2.4 1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Máxima urgencia</span>
+          <div class="canales">
+            <span class="canal canal--sms"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M5 11.5v2l3-2" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> SMS</span>
+            <span class="canal canal--whatsapp"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.6a6.4 6.4 0 00-5.5 9.7L1.6 14.4l3.2-.85A6.4 6.4 0 108 1.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> WhatsApp</span>
+          </div>
+          <div class="hito__segmento">
+            <p class="clave">Segmento</p>
+            <p>Quienes no abrieron, carritos abandonados y visitantes de la landing sin compra.</p>
+          </div>
+          <div class="copias">
+            <div class="copia copia--sms">
+              <p class="copia__canal">SMS</p>
+              <p>Fajitex: Tu bono de Polles vence en 48h. Últimas unidades del body Match Perfecto. Compra aquí: [link corto]</p>
+            </div>
+            <div class="copia copia--whatsapp">
+              <p class="copia__canal">WhatsApp</p>
+              <p>⏰ Se acaba el tiempo. Tu bono de Polles Bakeshop expira en 48 horas y quedan pocas unidades del body Match Perfecto. No dejes pasar tu antojo.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="hito">
+          <p class="hito__punto">06</p>
+          <h3 class="hito__nombre">Recuperación después de la fecha</h3>
+          <p class="hito__timing">22 a 25 de septiembre</p>
+          <div class="canales">
+            <span class="canal canal--email"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Email</span>
+          </div>
+          <div class="hito__segmento">
+            <p class="clave">Segmento</p>
+            <p>Quienes no abrieron y carritos abandonados.</p>
+          </div>
+          <div class="copias">
+            <div class="copia copia--email">
+              <p class="copia__canal">Email</p>
+              <p class="copia__asunto">Aún estás a tiempo de tener tu match perfecto</p>
+              <p class="copia__cuerpo">Se te quedó pendiente encontrar tu match. Todavía puedes aprovechar el combo Fajitex x Polles antes de que se agote.</p>
+            </div>
+          </div>
+          <div class="nota-planb-hito">
+            <p class="clave">Si se activa el Plan B</p>
+            <p>Y si el body ya se agotó, tu match perfecto también existe en versión short: mismo disfrute, mismo antojo.</p>
+          </div>
         </article>
       </div>
     </div>
@@ -1679,21 +1855,85 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 .nota p strong { color: var(--tinta); font-weight: 600; }
 
 /* ============ Mensajeria ============ */
-.linea-tiempo { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 8px; }
-.linea-tiempo::before { content: ""; position: absolute; top: 27px; left: 6%; right: 6%; height: 2px; background: var(--nude-hondo); }
-.envio { position: relative; background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); padding: 68px 22px 22px; box-shadow: var(--sombra); }
-.envio__punto {
-  position: absolute; top: 16px; left: 22px; width: 42px; height: 42px; border-radius: 50%;
+.hitos {
+  --paso: 22px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--paso); position: relative;
+}
+.hito {
+  position: relative; background: var(--nata); border: 1px solid var(--linea);
+  border-radius: var(--radio); padding: 70px 22px 22px; box-shadow: var(--sombra);
+  display: flex; flex-direction: column;
+}
+/* riel que une los hitos de cada fila */
+.hito::after {
+  content: ""; position: absolute; top: 38px; right: calc(var(--paso) * -1);
+  width: var(--paso); height: 2px; background: var(--nude-hondo);
+}
+.hito:nth-child(3n)::after { display: none; }
+.hito__punto {
+  position: absolute; top: 18px; left: 22px; width: 40px; height: 40px; border-radius: 50%;
   background: var(--rojo); color: #FFF6F0; display: grid; place-items: center;
-  font-family: var(--display); font-size: 1.2rem; line-height: 1;
+  font-family: var(--display); font-size: 1.15rem; line-height: 1;
   box-shadow: 0 0 0 6px var(--crema);
 }
-.envio__nombre { font-size: 1.2rem; }
-.envio__meta { margin-top: 12px; display: grid; gap: 10px; }
-.envio__meta div { display: grid; gap: 3px; }
-.envio__meta dt { font-family: var(--mono); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
-.envio__meta dd { margin: 0; font-size: .95rem; }
-.pendiente { display: inline-block; margin-top: 8px; font-family: var(--mono); font-size: .72rem; padding: 3px 9px; border-radius: 6px; background: var(--nude); color: var(--tinta); }
+.hito__nombre { font-size: 1.18rem; }
+.hito__timing {
+  display: inline-block; margin-top: 8px;
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .08em;
+  color: var(--tinta-sec); border: 1px solid var(--linea-firme); border-radius: 999px; padding: 3px 10px;
+}
+.canales { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.canal {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px;
+}
+.canal svg { width: 12px; height: 12px; flex: 0 0 auto; }
+.canal--email { background: var(--rojo); color: #FFF6F0; }
+.canal--whatsapp { background: var(--menta); color: #FFFFFF; }
+:root[data-theme="dark"] .canal--whatsapp { color: #08211D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .canal--whatsapp { color: #08211D; } }
+.canal--sms { background: var(--nude-hondo); color: var(--tinta); }
+
+.hito__segmento { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--linea); }
+.hito__segmento .clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.hito__segmento p { margin-top: 5px; font-size: .93rem; }
+
+.copias { display: grid; gap: 10px; margin-top: 16px; }
+.copia { padding: 13px 15px; border-radius: var(--radio-chico); font-size: .9rem; line-height: 1.55; }
+.copia__canal { font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+.copia--email { background: var(--nata-alta); border: 1px solid var(--linea); border-left: 3px solid var(--rojo); }
+.copia--email .copia__canal { color: var(--rojo); }
+.copia__asunto { margin-top: 6px; font-family: var(--titular); font-weight: 800; }
+.copia__cuerpo { margin-top: 6px; color: var(--tinta-sec); }
+.copia--whatsapp { background: var(--menta-piso); border: 1px solid var(--menta); border-radius: var(--radio-chico) var(--radio-chico) var(--radio-chico) 3px; }
+.copia--whatsapp .copia__canal { color: var(--menta); }
+.copia--whatsapp p:last-child { margin-top: 6px; }
+.copia--sms { background: var(--nude); color: var(--tinta); font-family: var(--mono); font-size: .82rem; }
+.copia--sms .copia__canal { color: var(--tinta); opacity: .7; font-family: var(--mono); }
+.copia--sms p:last-child { margin-top: 6px; }
+.copia .pendiente { margin-top: 8px; }
+
+.variante-copia { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--linea-firme); }
+.variante-copia .clave { font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-sec); }
+.variante-copia p { margin-top: 4px; font-style: italic; }
+
+/* el ultimo llamado es el hito de mayor urgencia */
+.hito--urgente { border: 2px solid var(--rojo); box-shadow: var(--sombra-alta); }
+.hito--urgente .hito__punto { box-shadow: 0 0 0 6px var(--crema), 0 0 0 8px var(--rojo); }
+.alerta-urgencia {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
+  background: var(--rojo); color: #FFF6F0; padding: 4px 11px; border-radius: 999px;
+}
+.alerta-urgencia svg { width: 12px; height: 12px; }
+
+.nota-planb-hito {
+  margin-top: 12px; padding: 12px 14px; border-radius: var(--radio-chico);
+  background: var(--menta-piso); border-left: 3px solid var(--menta); font-size: .89rem;
+}
+.nota-planb-hito .clave { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--menta); }
+.nota-planb-hito p { margin-top: 5px; }
 
 /* ============ Plan B ============ */
 .planb { background: var(--menta-piso); }
@@ -1796,9 +2036,11 @@ html { scroll-behavior: smooth; }
 @media (max-width: 1100px) {
   .contenedor { width: calc(100% - 48px); }
   .concepto__rejilla { grid-template-columns: 1fr; gap: 36px; }
-  .galeria, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: repeat(2, 1fr); }
+  .galeria, .porque__lista, .fichas { grid-template-columns: repeat(2, 1fr); }
   .campanas { grid-template-columns: 1fr; }
-  .linea-tiempo::before { display: none; }
+  .hitos { grid-template-columns: repeat(2, 1fr); }
+  .hito:nth-child(3n)::after { display: block; }
+  .hito:nth-child(2n)::after { display: none; }
   .decisiones, .notas, .planb__cols, .aviso__cuerpo, .activacion { grid-template-columns: 1fr; }
 }
 @media (max-width: 940px) {
@@ -1811,7 +2053,9 @@ html { scroll-behavior: smooth; }
   .seccion__encabezado { grid-template-columns: 1fr; gap: 10px; }
   .seccion__numero { font-size: 2.4rem; }
   .seccion__titulo { font-size: 2rem; }
-  .galeria, .linea-tiempo, .porque__lista, .fichas { grid-template-columns: 1fr; }
+  .galeria, .porque__lista, .fichas { grid-template-columns: 1fr; }
+  .hitos { grid-template-columns: 1fr; }
+  .hito::after { display: none !important; }
   .ruta { grid-template-columns: 1fr; }
   .marco--tira .marco__lienzo, .marco--tira .marco__foto { aspect-ratio: 16 / 10; }
   .flujo { flex-wrap: wrap; }
@@ -2327,47 +2571,155 @@ html { scroll-behavior: smooth; }
         &lt;p class="seccion__numero">05&lt;/p>
         &lt;div>
           &lt;p class="eyebrow">Email, SMS y WhatsApp&lt;/p>
-          &lt;h2 class="seccion__titulo">Cuatro envíos escalonados, del misterio a la urgencia&lt;/h2>
-          &lt;p class="seccion__bajada">El contenido está definido para email. SMS y WhatsApp replican solo los envíos 2 y 4, que son los que cargan la mecánica y la urgencia.&lt;/p>
+          &lt;h2 class="seccion__titulo">Seis envíos, del misterio a la recuperación&lt;/h2>
+          &lt;p class="seccion__bajada">La comunidad de WhatsApp se entera primero, el email carga el relato y el SMS cierra con la urgencia. Cada hito lleva el copy real, no un ejemplo genérico.&lt;/p>
         &lt;/div>
       &lt;/div>
 
-      &lt;div class="linea-tiempo revela">
-        &lt;article class="envio">
-          &lt;p class="envio__punto">01&lt;/p>
-          &lt;h3 class="envio__nombre">Teaser&lt;/h3>
-          &lt;dl class="envio__meta">
-            &lt;div>&lt;dt>Segmento&lt;/dt>&lt;dd>Toda la base&lt;/dd>&lt;/div>
-            &lt;div>&lt;dt>Canal&lt;/dt>&lt;dd>Email&lt;/dd>&lt;/div>
-            &lt;div>&lt;dt>Contenido&lt;/dt>&lt;dd>«Algo dulce está por pasar». Sin revelar todavía la marca aliada.&lt;/dd>&lt;/div>
-          &lt;/dl>
+      &lt;div class="hitos revela">
+
+        &lt;article class="hito">
+          &lt;p class="hito__punto">01&lt;/p>
+          &lt;h3 class="hito__nombre">Teaser&lt;/h3>
+          &lt;p class="hito__timing">7 a 10 días antes&lt;/p>
+          &lt;div class="canales">
+            &lt;span class="canal canal--whatsapp">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;path d="M8 1.6a6.4 6.4 0 00-5.5 9.7L1.6 14.4l3.2-.85A6.4 6.4 0 108 1.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>&lt;/svg> WhatsApp&lt;/span>
+            &lt;span class="canal canal--email">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/>&lt;path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>&lt;/svg> Email&lt;/span>
+          &lt;/div>
+          &lt;div class="hito__segmento">
+            &lt;p class="clave">Segmento&lt;/p>
+            &lt;p>Comunidad de WhatsApp primero, luego toda la base.&lt;/p>
+          &lt;/div>
+          &lt;div class="copias">
+            &lt;div class="copia copia--whatsapp">
+              &lt;p class="copia__canal">WhatsApp&lt;/p>
+              &lt;p>Algo dulce está a punto de pasar 👀🍪 Estamos preparando una colaboración que combina lo que amas ponerte con lo que amas comerte. Muy pronto lo cuentas tú primero, porque eres parte de la comunidad.&lt;/p>
+            &lt;/div>
+            &lt;div class="copia copia--email">
+              &lt;p class="copia__canal">Email&lt;/p>
+              &lt;p class="copia__asunto">Algo dulce está por pasar 👀&lt;/p>
+              &lt;p class="copia__cuerpo">Estamos cocinando algo diferente. Una colaboración que junta dos cosas que ya amas: tu figura y tu antojo de sábado. Muy pronto te contamos todo. Mientras tanto, prepárate.&lt;/p>
+            &lt;/div>
+          &lt;/div>
         &lt;/article>
-        &lt;article class="envio">
-          &lt;p class="envio__punto">02&lt;/p>
-          &lt;h3 class="envio__nombre">Lanzamiento&lt;/h3>
-          &lt;dl class="envio__meta">
-            &lt;div>&lt;dt>Segmento&lt;/dt>&lt;dd>Toda la base&lt;/dd>&lt;/div>
-            &lt;div>&lt;dt>Canal&lt;/dt>&lt;dd>Email y WhatsApp&lt;/dd>&lt;/div>
-            &lt;div>&lt;dt>Contenido&lt;/dt>&lt;dd>Reveal de la colaboración y explicación de la mecánica del bono cruzado.&lt;/dd>&lt;/div>
-          &lt;/dl>
+
+        &lt;article class="hito">
+          &lt;p class="hito__punto">02&lt;/p>
+          &lt;h3 class="hito__nombre">Lanzamiento oficial&lt;/h3>
+          &lt;p class="hito__timing">Día del lanzamiento&lt;/p>
+          &lt;div class="canales">
+            &lt;span class="canal canal--email">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/>&lt;path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>&lt;/svg> Email&lt;/span>
+            &lt;span class="canal canal--whatsapp">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;path d="M8 1.6a6.4 6.4 0 00-5.5 9.7L1.6 14.4l3.2-.85A6.4 6.4 0 108 1.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>&lt;/svg> WhatsApp&lt;/span>
+          &lt;/div>
+          &lt;div class="hito__segmento">
+            &lt;p class="clave">Segmento&lt;/p>
+            &lt;p>Toda la base.&lt;/p>
+          &lt;/div>
+          &lt;div class="copias">
+            &lt;div class="copia copia--email">
+              &lt;p class="copia__canal">Email&lt;/p>
+              &lt;p class="copia__asunto">Tu Match Perfecto ya llegó 💗 Fajitex x Polles Bakeshop&lt;/p>
+              &lt;p class="copia__cuerpo">Así como una galleta perfecta es crujiente por fuera y suave por dentro, tu match perfecto sostiene tu figura mientras disfrutas la vida sin culpa. Nos unimos con Polles Bakeshop para que vivas la tarde de sábado completa: tu body Fajitex y tu antojo favorito, con beneficios para las dos cosas.&lt;/p>
+            &lt;/div>
+            &lt;div class="copia copia--whatsapp">
+              &lt;p class="copia__canal">WhatsApp&lt;/p>
+              &lt;p>Ya es oficial 💗 Fajitex x Polles Bakeshop. Compra tu body y recibe un bono para Polles. Compra en Polles y recibe un descuento en tu body. Tu match perfecto, completo.&lt;/p>
+            &lt;/div>
+          &lt;/div>
         &lt;/article>
-        &lt;article class="envio">
-          &lt;p class="envio__punto">03&lt;/p>
-          &lt;h3 class="envio__nombre">Fajas de Novia&lt;/h3>
-          &lt;dl class="envio__meta">
-            &lt;div>&lt;dt>Segmento&lt;/dt>&lt;dd>Interés o compra previa en la categoría&lt;/dd>&lt;/div>
-            &lt;div>&lt;dt>Canal&lt;/dt>&lt;dd>Email&lt;/dd>&lt;/div>
-            &lt;div>&lt;dt>Contenido&lt;/dt>&lt;dd>Descuento específico que enlaza el match perfecto con el match de pareja.&lt;span class="pendiente">Pendiente: porcentaje sujeto a la condición comercial aprobada&lt;/span>&lt;/dd>&lt;/div>
-          &lt;/dl>
+
+        &lt;article class="hito">
+          &lt;p class="hito__punto">03&lt;/p>
+          &lt;h3 class="hito__nombre">Segmento Novias&lt;/h3>
+          &lt;p class="hito__timing">2 a 3 días después&lt;/p>
+          &lt;div class="canales">
+            &lt;span class="canal canal--email">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/>&lt;path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>&lt;/svg> Email&lt;/span>
+          &lt;/div>
+          &lt;div class="hito__segmento">
+            &lt;p class="clave">Segmento&lt;/p>
+            &lt;p>Clientas con interés o compra previa en categoría Novia, y ticket alto.&lt;/p>
+          &lt;/div>
+          &lt;div class="copias">
+            &lt;div class="copia copia--email">
+              &lt;p class="copia__canal">Email&lt;/p>
+              &lt;p class="copia__asunto">Tu match perfecto también aplica para el suyo 💍&lt;/p>
+              &lt;p class="copia__cuerpo">Si ya encontraste a tu match, encuentra también el body que te acompaña el día más importante. Por tiempo limitado, [X]% de descuento en nuestra categoría de Fajas de Novia.&lt;/p>
+              &lt;span class="marca-aprob marca-aprob--linea">El [X]% requiere aprobación&lt;/span>
+            &lt;/div>
+          &lt;/div>
         &lt;/article>
-        &lt;article class="envio">
-          &lt;p class="envio__punto">04&lt;/p>
-          &lt;h3 class="envio__nombre">Último llamado&lt;/h3>
-          &lt;dl class="envio__meta">
-            &lt;div>&lt;dt>Segmento&lt;/dt>&lt;dd>Quienes no abrieron y carritos abandonados&lt;/dd>&lt;/div>
-            &lt;div>&lt;dt>Canal&lt;/dt>&lt;dd>Email y SMS&lt;/dd>&lt;/div>
-            &lt;div>&lt;dt>Contenido&lt;/dt>&lt;dd>Urgencia y recordatorio de que el bono Polles vence.&lt;/dd>&lt;/div>
-          &lt;/dl>
+
+        &lt;article class="hito">
+          &lt;p class="hito__punto">04&lt;/p>
+          &lt;h3 class="hito__nombre">Campaña regalo, espejo hombres&lt;/h3>
+          &lt;p class="hito__timing">Semana 2&lt;/p>
+          &lt;div class="canales">
+            &lt;span class="canal canal--email">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/>&lt;path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>&lt;/svg> Email&lt;/span>
+            &lt;span class="canal canal--whatsapp">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;path d="M8 1.6a6.4 6.4 0 00-5.5 9.7L1.6 14.4l3.2-.85A6.4 6.4 0 108 1.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>&lt;/svg> WhatsApp&lt;/span>
+          &lt;/div>
+          &lt;div class="hito__segmento">
+            &lt;p class="clave">Segmento&lt;/p>
+            &lt;p>Base masculina capturada por la campaña C, y hombres con compras previas de regalo.&lt;/p>
+          &lt;/div>
+          &lt;div class="copias">
+            &lt;div class="copia copia--email">
+              &lt;p class="copia__canal">Email y WhatsApp&lt;/p>
+              &lt;p class="copia__cuerpo">¿No sabes qué regalarle? Ya lo encontraste. En Fajitex tenemos el regalo perfecto para ella. Cómodo, elegante, y con un extra dulce de Polles Bakeshop incluido.&lt;/p>
+              &lt;div class="variante-copia">
+                &lt;p class="clave">Variante secundaria&lt;/p>
+                &lt;p>¿Qué le vas a regalar a mamá? En Fajitex encuentras el regalo perfecto.&lt;/p>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/article>
+
+        &lt;article class="hito hito--urgente">
+          &lt;p class="hito__punto">05&lt;/p>
+          &lt;h3 class="hito__nombre">Último llamado&lt;/h3>
+          &lt;p class="hito__timing">48 horas antes del 19&lt;/p>
+          &lt;span class="alerta-urgencia">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.6"/>&lt;path d="M8 4.6V8l2.4 1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>&lt;/svg> Máxima urgencia&lt;/span>
+          &lt;div class="canales">
+            &lt;span class="canal canal--sms">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;rect x="1.5" y="2.5" width="13" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/>&lt;path d="M5 11.5v2l3-2" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>&lt;/svg> SMS&lt;/span>
+            &lt;span class="canal canal--whatsapp">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;path d="M8 1.6a6.4 6.4 0 00-5.5 9.7L1.6 14.4l3.2-.85A6.4 6.4 0 108 1.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>&lt;/svg> WhatsApp&lt;/span>
+          &lt;/div>
+          &lt;div class="hito__segmento">
+            &lt;p class="clave">Segmento&lt;/p>
+            &lt;p>Quienes no abrieron, carritos abandonados y visitantes de la landing sin compra.&lt;/p>
+          &lt;/div>
+          &lt;div class="copias">
+            &lt;div class="copia copia--sms">
+              &lt;p class="copia__canal">SMS&lt;/p>
+              &lt;p>Fajitex: Tu bono de Polles vence en 48h. Últimas unidades del body Match Perfecto. Compra aquí: [link corto]&lt;/p>
+            &lt;/div>
+            &lt;div class="copia copia--whatsapp">
+              &lt;p class="copia__canal">WhatsApp&lt;/p>
+              &lt;p>⏰ Se acaba el tiempo. Tu bono de Polles Bakeshop expira en 48 horas y quedan pocas unidades del body Match Perfecto. No dejes pasar tu antojo.&lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/article>
+
+        &lt;article class="hito">
+          &lt;p class="hito__punto">06&lt;/p>
+          &lt;h3 class="hito__nombre">Recuperación después de la fecha&lt;/h3>
+          &lt;p class="hito__timing">22 a 25 de septiembre&lt;/p>
+          &lt;div class="canales">
+            &lt;span class="canal canal--email">&lt;svg viewBox="0 0 16 16" fill="none" aria-hidden="true">&lt;rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/>&lt;path d="M2 4.5l6 4.5l6-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>&lt;/svg> Email&lt;/span>
+          &lt;/div>
+          &lt;div class="hito__segmento">
+            &lt;p class="clave">Segmento&lt;/p>
+            &lt;p>Quienes no abrieron y carritos abandonados.&lt;/p>
+          &lt;/div>
+          &lt;div class="copias">
+            &lt;div class="copia copia--email">
+              &lt;p class="copia__canal">Email&lt;/p>
+              &lt;p class="copia__asunto">Aún estás a tiempo de tener tu match perfecto&lt;/p>
+              &lt;p class="copia__cuerpo">Se te quedó pendiente encontrar tu match. Todavía puedes aprovechar el combo Fajitex x Polles antes de que se agote.&lt;/p>
+            &lt;/div>
+          &lt;/div>
+          &lt;div class="nota-planb-hito">
+            &lt;p class="clave">Si se activa el Plan B&lt;/p>
+            &lt;p>Y si el body ya se agotó, tu match perfecto también existe en versión short: mismo disfrute, mismo antojo.&lt;/p>
+          &lt;/div>
         &lt;/article>
       &lt;/div>
     &lt;/div>
