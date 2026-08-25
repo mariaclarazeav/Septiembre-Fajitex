@@ -41,7 +41,10 @@ cuerpo = cuerpo.replace(/[ \t]*<!--imagen:([a-z]+)-->\n([\s\S]*?)[ \t]*<!--\/ima
   const alt = textoPlano(que) + ". " + textoPlano(spec);
   puestas.push(nombre + " (" + foto.origen + ", " + Math.round(foto.bytes / 1024) + " kB)");
   const sangria = todo.match(/^[ \t]*/)[0];
-  return sangria + '<img class="marco__foto" src="' + foto.uri + '" alt="' + alt.replace(/"/g, "&quot;") + '" width="' + foto.ancho + '" height="' + foto.alto + '">\n';
+  /* La tira de portada se muestra completa: toma la proporcion real del archivo
+     en vez de la que trae la maqueta, para que nunca se recorte. */
+  const razon = nombre === "hero" ? ' style="aspect-ratio: ' + foto.ancho + " / " + foto.alto + '"' : "";
+  return sangria + '<img class="marco__foto" src="' + foto.uri + '" alt="' + alt.replace(/"/g, "&quot;") + '"' + razon + ' width="' + foto.ancho + '" height="' + foto.alto + '">\n';
 });
 
 const estadoInicial = { decisiones: {} };
