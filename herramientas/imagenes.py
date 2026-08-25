@@ -50,10 +50,12 @@ def preparar(ruta, ancho_max):
 
 def main():
     salida = {}
+    usadas = set()
     for nombre, ancho in ANCHOS.items():
         ruta = buscar(nombre)
         if not ruta:
             continue
+        usadas.add(os.path.basename(ruta))
         try:
             crudo, w, h = preparar(ruta, ancho)
         except Exception as error:
@@ -67,7 +69,13 @@ def main():
             "origen": os.path.basename(ruta),
             "origen_bytes": os.path.getsize(ruta),
         }
-    json.dump(salida, sys.stdout)
+    # Un archivo con un nombre que no corresponde a ninguna ranura se ignora
+    # en silencio, y eso ya nos costo una vuelta: mejor que el build lo diga.
+    sueltas = sorted(
+        f for f in os.listdir(RAIZ)
+        if f.lower().endswith(EXTENSIONES) and f not in usadas
+    )
+    json.dump({"fotos": salida, "sueltas": sueltas}, sys.stdout)
 
 
 if __name__ == "__main__":

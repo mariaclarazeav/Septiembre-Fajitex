@@ -20,7 +20,7 @@ const cabeza = fs.readFileSync(path.join(raiz, "src/cabeza.html"), "utf8").trim(
 let cuerpo = fs.readFileSync(path.join(raiz, "src/cuerpo.html"), "utf8").trim();
 
 /* ---- Fotos: van incrustadas porque el visor no deja pedirlas a otro servidor ---- */
-const fotos = JSON.parse(
+const informe = JSON.parse(
   execFileSync("python3", [path.join(raiz, "herramientas/imagenes.py")], {
     encoding: "utf8",
     /* Las fotos viajan como data URI, o sea texto: el limite de 1 MB que trae
@@ -28,6 +28,7 @@ const fotos = JSON.parse(
     maxBuffer: 512 * 1024 * 1024,
   })
 );
+const fotos = informe.fotos;
 
 function textoPlano(html) {
   return html.replace(/<br\s*\/?>/g, " ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
@@ -131,4 +132,10 @@ if (salida.length > LIMITE * 0.92) {
 
 if (puestas.length) { console.log("Fotos incrustadas: " + puestas.join(", ")); }
 if (faltantes.length) { console.log("Marcos todavia sin foto: " + faltantes.join(", ")); }
+if (informe.sueltas.length) {
+  console.log(
+    "Archivos en src/imagenes que ningun marco usa: " + informe.sueltas.join(", ") +
+    "\n  Revisa el nombre contra src/imagenes/LEEME.txt, porque asi no entran a la pagina."
+  );
+}
 console.log("index.html: " + (salida.length / 1048576).toFixed(2) + " MB de 16 MB");
