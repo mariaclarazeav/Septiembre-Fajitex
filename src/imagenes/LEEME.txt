@@ -8,14 +8,14 @@ ser .jpg, .jpeg, .png o .webp):
   producto   Concepto, marco 1. 4:5 vertical. Body sobre la silla con la
              caja Polles al lado.
 
-  detalle    Concepto, marco 2. 4:5 vertical. Macro de textura de galleta
-             contra textura de tela.
+  activacion Concepto, marco 2. 4:5 vertical. Activación en punto Polles:
+             backdrop de las dos marcas, rack Fajitex y producto Polles.
 
   candid     Concepto, marco 3. 4:5 vertical. Mesa de sábado, manos, café,
              migas.
 
-  talento    Concepto, marco 4. 4:5 vertical. Actitud "date el gusto", luz
-             natural, sin pose de estudio.
+  talento    Concepto, marco 4. 4:5 vertical. Actitud "date el gusto"
+             dentro del local, luz natural, sin pose de estudio.
 
 Después corre:  node construir.js
 

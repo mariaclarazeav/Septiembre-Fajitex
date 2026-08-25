@@ -21,7 +21,12 @@ let cuerpo = fs.readFileSync(path.join(raiz, "src/cuerpo.html"), "utf8").trim();
 
 /* ---- Fotos: van incrustadas porque el visor no deja pedirlas a otro servidor ---- */
 const fotos = JSON.parse(
-  execFileSync("python3", [path.join(raiz, "herramientas/imagenes.py")], { encoding: "utf8" })
+  execFileSync("python3", [path.join(raiz, "herramientas/imagenes.py")], {
+    encoding: "utf8",
+    /* Las fotos viajan como data URI, o sea texto: el limite de 1 MB que trae
+       Node por defecto se queda corto apenas hay mas de dos. */
+    maxBuffer: 512 * 1024 * 1024,
+  })
 );
 
 function textoPlano(html) {

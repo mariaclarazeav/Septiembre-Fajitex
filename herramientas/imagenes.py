@@ -16,7 +16,7 @@ RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "im
 EXTENSIONES = (".jpg", ".jpeg", ".png", ".webp")
 
 # ancho maximo util en la maqueta, por el doble de densidad de pantalla
-ANCHOS = {"hero": 2200, "producto": 1400, "detalle": 1400, "candid": 1400, "talento": 1400}
+ANCHOS = {"hero": 2200, "producto": 1400, "activacion": 1400, "candid": 1400, "talento": 1400}
 
 
 def buscar(nombre):
