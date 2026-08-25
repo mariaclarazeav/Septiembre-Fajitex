@@ -1,0 +1,27 @@
+Suelta acá las cinco fotos, con estos nombres exactos (la extensión puede
+ser .jpg, .jpeg, .png o .webp):
+
+  hero       Portada. 16:9 apaisada. Foto candid estilo Polles: mesa de
+             tarde, luz natural, galleta partida y textura de tela en el
+             mismo encuadre.
+
+  producto   Concepto, marco 1. 4:5 vertical. Body sobre la silla con la
+             caja Polles al lado.
+
+  detalle    Concepto, marco 2. 4:5 vertical. Macro de textura de galleta
+             contra textura de tela.
+
+  candid     Concepto, marco 3. 4:5 vertical. Mesa de sábado, manos, café,
+             migas.
+
+  talento    Concepto, marco 4. 4:5 vertical. Actitud "date el gusto", luz
+             natural, sin pose de estudio.
+
+Después corre:  node construir.js
+
+El build las reduce, las comprime y las incrusta dentro de index.html. Los
+marcos que no tengan foto se quedan con su marcador de espacio, así que
+puedes ir subiéndolas de a una.
+
+Sube el archivo más grande que tengas. La reducción la hace el build; lo
+que no se puede es recuperar calidad que no venía en el original.

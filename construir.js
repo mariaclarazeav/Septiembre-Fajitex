@@ -13,10 +13,36 @@
  */
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 
 const raiz = __dirname;
 const cabeza = fs.readFileSync(path.join(raiz, "src/cabeza.html"), "utf8").trim();
-const cuerpo = fs.readFileSync(path.join(raiz, "src/cuerpo.html"), "utf8").trim();
+let cuerpo = fs.readFileSync(path.join(raiz, "src/cuerpo.html"), "utf8").trim();
+
+/* ---- Fotos: van incrustadas porque el visor no deja pedirlas a otro servidor ---- */
+const fotos = JSON.parse(
+  execFileSync("python3", [path.join(raiz, "herramientas/imagenes.py")], { encoding: "utf8" })
+);
+
+function textoPlano(html) {
+  return html.replace(/<br\s*\/?>/g, " ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+}
+
+const puestas = [];
+const faltantes = [];
+cuerpo = cuerpo.replace(/[ \t]*<!--imagen:([a-z]+)-->\n([\s\S]*?)[ \t]*<!--\/imagen-->\n/g, (todo, nombre, bloque) => {
+  const foto = fotos[nombre];
+  if (!foto) {
+    faltantes.push(nombre);
+    return bloque;
+  }
+  const que = (bloque.match(/class="marco__que">([\s\S]*?)<\/p>/) || [, nombre])[1];
+  const spec = (bloque.match(/class="marco__spec">([\s\S]*?)<\/p>/) || [, ""])[1];
+  const alt = textoPlano(que) + ". " + textoPlano(spec);
+  puestas.push(nombre + " (" + foto.origen + ", " + Math.round(foto.bytes / 1024) + " kB)");
+  const sangria = todo.match(/^[ \t]*/)[0];
+  return sangria + '<img class="marco__foto" src="' + foto.uri + '" alt="' + alt.replace(/"/g, "&quot;") + '" width="' + foto.ancho + '" height="' + foto.alto + '">\n';
+});
 
 const estadoInicial = { decisiones: {} };
 
@@ -86,4 +112,15 @@ if (!primeraVuelta.startsWith("<!doctype html>")) {
   problemas.push("la republicacion no empieza con doctype y el runtime la rechazaria");
 }
 
-console.log("index.html: " + salida.length + " bytes (plantilla interna: " + documento.length + " bytes)");
+const LIMITE = 16 * 1024 * 1024;
+if (salida.length > LIMITE * 0.92) {
+  console.error(
+    "La pagina pesa " + (salida.length / 1048576).toFixed(1) + " MB y el limite del visor es 16 MB.\n" +
+    "Baja la calidad o el ancho maximo en herramientas/imagenes.py y vuelve a construir."
+  );
+  process.exit(1);
+}
+
+if (puestas.length) { console.log("Fotos incrustadas: " + puestas.join(", ")); }
+if (faltantes.length) { console.log("Marcos todavia sin foto: " + faltantes.join(", ")); }
+console.log("index.html: " + (salida.length / 1048576).toFixed(2) + " MB de 16 MB");

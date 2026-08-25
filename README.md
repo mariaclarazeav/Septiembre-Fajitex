@@ -32,10 +32,24 @@ Si la página se abre fuera del visor de Artifacts, o quien la abre solo
 tiene permiso de lectura, las decisiones se guardan en el navegador de esa
 persona y el botón «Copiar todas las decisiones» sirve para enviarlas.
 
+## Las fotos
+
+Van en `src/imagenes/`, con los nombres `hero`, `producto`, `detalle`,
+`candid` y `talento` (ver `src/imagenes/LEEME.txt`). Después:
+
+    node construir.js
+
+El build las endereza según su EXIF, las reduce al ancho que la maqueta
+necesita, las comprime y las incrusta como data URI. Van adentro del
+archivo porque la política de seguridad del visor no deja que la página
+pida imágenes a otro servidor.
+
+Los marcos sin foto se quedan con su marcador de espacio, así que se
+pueden ir subiendo de a una. El build avisa cuánto pesa la página y falla
+si se acerca al límite de 16 MB.
+
 ## Lo que falta llenar
 
-- Las cinco imágenes (una de portada, cuatro de mood) tienen su espacio
-  reservado a tamaño real, con la especificación de cada toma escrita en
-  el marco.
+- Las cinco fotos.
 - El porcentaje del descuento cruzado, en la sección 5, envío 3. Queda
   marcado como pendiente hasta que se apruebe la condición comercial.
