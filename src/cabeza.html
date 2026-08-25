@@ -44,6 +44,11 @@ button, input, textarea { font: inherit; color: inherit; }
   --alto: #C7221F;
   --corte-piso:  #145F54;
   --corte-tinta: #FFFFFF;
+  --oscuro-piso:  #2B1410;
+  --oscuro-carta: #3B1E18;
+  --oscuro-tinta: #FAEFE6;
+  --oscuro-sec:   rgba(250, 239, 230, .74);
+  --oscuro-linea: rgba(250, 239, 230, .22);
 
   --display: "Lilita One", "Baloo 2", Impact, sans-serif;
   --titular: "Baloo 2", "Trebuchet MS", sans-serif;
@@ -88,6 +93,11 @@ button, input, textarea { font: inherit; color: inherit; }
     --alto: #FF8A80;
     --corte-piso:  #4FD2BC;
     --corte-tinta: #08211D;
+    --oscuro-piso:  #130A08;
+    --oscuro-carta: #1F110E;
+    --oscuro-tinta: #FBEDE4;
+    --oscuro-sec:   rgba(251, 237, 228, .72);
+    --oscuro-linea: rgba(251, 237, 228, .20);
   }
 }
 
@@ -122,6 +132,11 @@ button, input, textarea { font: inherit; color: inherit; }
   --alto: #FF8A80;
   --corte-piso:  #4FD2BC;
   --corte-tinta: #08211D;
+  --oscuro-piso:  #130A08;
+  --oscuro-carta: #1F110E;
+  --oscuro-tinta: #FBEDE4;
+  --oscuro-sec:   rgba(251, 237, 228, .72);
+  --oscuro-linea: rgba(251, 237, 228, .20);
 }
 
 /* ============ Base ============ */
@@ -504,6 +519,80 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 }
 .nota-planb-hito .clave { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--menta); }
 .nota-planb-hito p { margin-top: 5px; }
+
+/* ============ 07 Canal B2B: lectura ejecutiva, menos adorno ============ */
+.b2b__intro { max-width: 66ch; font-size: 1.06rem; color: var(--tinta-sec); }
+.b2b__intro + * { margin-top: 30px; }
+.b2b h3.rotulo {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--rojo); margin-top: 52px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--linea);
+}
+.b2b h3.rotulo + * { margin-top: 22px; }
+
+.diagnostico { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.diag { background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); padding: 24px; display: flex; flex-direction: column; }
+.diag--foco { border-color: var(--rojo); box-shadow: var(--sombra); }
+.diag__estado { font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.diag--foco .diag__estado { color: var(--rojo); }
+.diag__nombre { margin-top: 8px; font-size: 1.2rem; }
+.diag__texto { margin-top: 12px; font-size: .96rem; color: var(--tinta-sec); }
+.diag__cifra { margin-top: auto; padding-top: 16px; }
+
+.modelos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.modelo { padding: 18px 20px; border-radius: var(--radio-chico); background: var(--nata); border: 1px solid var(--linea); }
+.modelo__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--rojo); }
+.modelo p { margin-top: 7px; font-size: .95rem; color: var(--tinta-sec); }
+.modelo strong { color: var(--tinta); font-weight: 600; }
+
+.tacticas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.tactica { background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); padding: 24px; display: flex; flex-direction: column; }
+.tactica__nombre { font-size: 1.12rem; }
+.tactica__campos { margin-top: 14px; display: grid; gap: 12px; }
+.tactica__campos .clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.tactica__campos p + p { margin-top: 4px; }
+.tactica__campos .valor { font-size: .96rem; }
+.tactica__cierre { margin-top: auto; padding-top: 16px; }
+.sin-aprobacion {
+  display: inline-block; font-family: var(--mono); font-size: .68rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--menta); border: 1px solid var(--menta);
+  border-radius: 999px; padding: 4px 11px;
+}
+
+/* Bloque oscuro de marca blanca */
+.oscuro {
+  background: var(--oscuro-piso); color: var(--oscuro-tinta);
+  border-radius: var(--radio); padding: 40px; border: 1px solid var(--oscuro-linea);
+}
+.oscuro__eyebrow { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--oscuro-sec); }
+.oscuro__titulo { margin-top: 12px; font-size: 2rem; color: var(--oscuro-tinta); }
+.oscuro__texto { margin-top: 14px; max-width: 62ch; color: var(--oscuro-sec); font-size: 1.03rem; }
+.oscuro__texto strong { color: var(--oscuro-tinta); font-weight: 600; }
+.lista-check { display: grid; gap: 14px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--oscuro-linea); }
+.check { display: grid; grid-template-columns: 26px 1fr; gap: 14px; align-items: start; padding: 18px 20px; border-radius: var(--radio-chico); background: var(--oscuro-carta); }
+.check__caja { width: 20px; height: 20px; margin-top: 2px; border: 2px solid var(--oscuro-linea); border-radius: 5px; }
+.check__nombre { font-family: var(--titular); font-weight: 800; font-size: 1.05rem; }
+.check__texto { margin-top: 6px; font-size: .95rem; color: var(--oscuro-sec); }
+.check .marca-aprob { margin-top: 10px; }
+
+/* Resumen de autonomía */
+.dos-columnas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.columna { border-radius: var(--radio); border: 1px solid var(--linea); overflow: hidden; background: var(--nata); }
+.columna__cabeza { padding: 16px 22px; font-family: var(--titular); font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+.columna--si .columna__cabeza { background: var(--menta); color: #FFFFFF; }
+:root[data-theme="dark"] .columna--si .columna__cabeza { color: #08211D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .columna--si .columna__cabeza { color: #08211D; } }
+.columna--no .columna__cabeza { background: var(--rojo); color: #FFF6F0; }
+.columna ul { padding: 8px 0; }
+.columna li { padding: 12px 22px; font-size: .96rem; border-bottom: 1px solid var(--linea); display: grid; grid-template-columns: 14px 1fr; gap: 12px; align-items: baseline; }
+.columna li:last-child { border-bottom: 0; }
+.columna li::before { content: "▪"; font-size: .7em; }
+.columna--si li::before { color: var(--menta); }
+.columna--no li::before { color: var(--rojo); }
+
+@media (max-width: 1100px) {
+  .diagnostico, .modelos, .tacticas, .dos-columnas { grid-template-columns: 1fr; }
+}
 
 /* ============ Plan B ============ */
 .planb { background: var(--menta-piso); }

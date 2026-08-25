@@ -44,6 +44,11 @@ button, input, textarea { font: inherit; color: inherit; }
   --alto: #C7221F;
   --corte-piso:  #145F54;
   --corte-tinta: #FFFFFF;
+  --oscuro-piso:  #2B1410;
+  --oscuro-carta: #3B1E18;
+  --oscuro-tinta: #FAEFE6;
+  --oscuro-sec:   rgba(250, 239, 230, .74);
+  --oscuro-linea: rgba(250, 239, 230, .22);
 
   --display: "Lilita One", "Baloo 2", Impact, sans-serif;
   --titular: "Baloo 2", "Trebuchet MS", sans-serif;
@@ -88,6 +93,11 @@ button, input, textarea { font: inherit; color: inherit; }
     --alto: #FF8A80;
     --corte-piso:  #4FD2BC;
     --corte-tinta: #08211D;
+    --oscuro-piso:  #130A08;
+    --oscuro-carta: #1F110E;
+    --oscuro-tinta: #FBEDE4;
+    --oscuro-sec:   rgba(251, 237, 228, .72);
+    --oscuro-linea: rgba(251, 237, 228, .20);
   }
 }
 
@@ -122,6 +132,11 @@ button, input, textarea { font: inherit; color: inherit; }
   --alto: #FF8A80;
   --corte-piso:  #4FD2BC;
   --corte-tinta: #08211D;
+  --oscuro-piso:  #130A08;
+  --oscuro-carta: #1F110E;
+  --oscuro-tinta: #FBEDE4;
+  --oscuro-sec:   rgba(251, 237, 228, .72);
+  --oscuro-linea: rgba(251, 237, 228, .20);
 }
 
 /* ============ Base ============ */
@@ -505,6 +520,80 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 .nota-planb-hito .clave { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--menta); }
 .nota-planb-hito p { margin-top: 5px; }
 
+/* ============ 07 Canal B2B: lectura ejecutiva, menos adorno ============ */
+.b2b__intro { max-width: 66ch; font-size: 1.06rem; color: var(--tinta-sec); }
+.b2b__intro + * { margin-top: 30px; }
+.b2b h3.rotulo {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--rojo); margin-top: 52px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--linea);
+}
+.b2b h3.rotulo + * { margin-top: 22px; }
+
+.diagnostico { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.diag { background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); padding: 24px; display: flex; flex-direction: column; }
+.diag--foco { border-color: var(--rojo); box-shadow: var(--sombra); }
+.diag__estado { font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.diag--foco .diag__estado { color: var(--rojo); }
+.diag__nombre { margin-top: 8px; font-size: 1.2rem; }
+.diag__texto { margin-top: 12px; font-size: .96rem; color: var(--tinta-sec); }
+.diag__cifra { margin-top: auto; padding-top: 16px; }
+
+.modelos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.modelo { padding: 18px 20px; border-radius: var(--radio-chico); background: var(--nata); border: 1px solid var(--linea); }
+.modelo__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--rojo); }
+.modelo p { margin-top: 7px; font-size: .95rem; color: var(--tinta-sec); }
+.modelo strong { color: var(--tinta); font-weight: 600; }
+
+.tacticas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.tactica { background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); padding: 24px; display: flex; flex-direction: column; }
+.tactica__nombre { font-size: 1.12rem; }
+.tactica__campos { margin-top: 14px; display: grid; gap: 12px; }
+.tactica__campos .clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.tactica__campos p + p { margin-top: 4px; }
+.tactica__campos .valor { font-size: .96rem; }
+.tactica__cierre { margin-top: auto; padding-top: 16px; }
+.sin-aprobacion {
+  display: inline-block; font-family: var(--mono); font-size: .68rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--menta); border: 1px solid var(--menta);
+  border-radius: 999px; padding: 4px 11px;
+}
+
+/* Bloque oscuro de marca blanca */
+.oscuro {
+  background: var(--oscuro-piso); color: var(--oscuro-tinta);
+  border-radius: var(--radio); padding: 40px; border: 1px solid var(--oscuro-linea);
+}
+.oscuro__eyebrow { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--oscuro-sec); }
+.oscuro__titulo { margin-top: 12px; font-size: 2rem; color: var(--oscuro-tinta); }
+.oscuro__texto { margin-top: 14px; max-width: 62ch; color: var(--oscuro-sec); font-size: 1.03rem; }
+.oscuro__texto strong { color: var(--oscuro-tinta); font-weight: 600; }
+.lista-check { display: grid; gap: 14px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--oscuro-linea); }
+.check { display: grid; grid-template-columns: 26px 1fr; gap: 14px; align-items: start; padding: 18px 20px; border-radius: var(--radio-chico); background: var(--oscuro-carta); }
+.check__caja { width: 20px; height: 20px; margin-top: 2px; border: 2px solid var(--oscuro-linea); border-radius: 5px; }
+.check__nombre { font-family: var(--titular); font-weight: 800; font-size: 1.05rem; }
+.check__texto { margin-top: 6px; font-size: .95rem; color: var(--oscuro-sec); }
+.check .marca-aprob { margin-top: 10px; }
+
+/* Resumen de autonomía */
+.dos-columnas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.columna { border-radius: var(--radio); border: 1px solid var(--linea); overflow: hidden; background: var(--nata); }
+.columna__cabeza { padding: 16px 22px; font-family: var(--titular); font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+.columna--si .columna__cabeza { background: var(--menta); color: #FFFFFF; }
+:root[data-theme="dark"] .columna--si .columna__cabeza { color: #08211D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .columna--si .columna__cabeza { color: #08211D; } }
+.columna--no .columna__cabeza { background: var(--rojo); color: #FFF6F0; }
+.columna ul { padding: 8px 0; }
+.columna li { padding: 12px 22px; font-size: .96rem; border-bottom: 1px solid var(--linea); display: grid; grid-template-columns: 14px 1fr; gap: 12px; align-items: baseline; }
+.columna li:last-child { border-bottom: 0; }
+.columna li::before { content: "▪"; font-size: .7em; }
+.columna--si li::before { color: var(--menta); }
+.columna--no li::before { color: var(--rojo); }
+
+@media (max-width: 1100px) {
+  .diagnostico, .modelos, .tacticas, .dos-columnas { grid-template-columns: 1fr; }
+}
+
 /* ============ Plan B ============ */
 .planb { background: var(--menta-piso); }
 .planb .seccion__numero, .planb .eyebrow { color: var(--menta); }
@@ -654,6 +743,7 @@ html { scroll-behavior: smooth; }
       <a class="barra__link" href="#paid">Paid Media</a>
       <a class="barra__link" href="#mensajeria">Email y WhatsApp</a>
       <a class="barra__link" href="#planb">Plan B</a>
+      <a class="barra__link" href="#b2b">B2B</a>
       <a class="barra__link barra__link--destino" href="#aprobaciones">Aprobaciones</a>
     </nav>
   </div>
@@ -832,7 +922,7 @@ html { scroll-behavior: smooth; }
             </div>
             <div class="ruta__pie">
               <span class="marca-aprob">Requiere aprobación</span>
-              <p>Porcentaje de descuento a definir. Es condición comercial, va en la sección 07.</p>
+              <p>Porcentaje de descuento a definir. Es condición comercial, va en la sección 08.</p>
             </div>
           </div>
         </article>
@@ -1343,11 +1433,250 @@ html { scroll-behavior: smooth; }
     </div>
   </section>
 
-  <!-- ══════════════ 07 APROBACIONES ══════════════ -->
-  <section class="seccion aprobaciones" id="aprobaciones">
+  <!-- ══════════════ 07 CANAL B2B ══════════════ -->
+  <section class="seccion b2b" id="b2b">
     <div class="contenedor">
       <div class="seccion__encabezado revela">
         <p class="seccion__numero">07</p>
+        <div>
+          <p class="eyebrow">Canal B2B</p>
+          <h2 class="seccion__titulo">Encuentra tu match de negocio</h2>
+          <p class="seccion__bajada">La misma idea de encaje, con otro interlocutor. Acá no se le habla a la clienta final sino a quien compra para revender, para producir su propia marca o para reemplazar un proveedor que le falló.</p>
+        </div>
+      </div>
+
+      <h3 class="rotulo revela">Diagnóstico</h3>
+      <div class="diagnostico revela">
+        <article class="diag diag--foco">
+          <p class="diag__estado">Foco prioritario</p>
+          <h4 class="diag__nombre">Distribuidores mayoristas y minoristas</h4>
+          <p class="diag__texto">Es donde se está perdiendo cliente. Hay salidas sin causa documentada, y sin saber por qué se fueron cualquier oferta de reingreso es a ciegas.</p>
+          <p class="diag__cifra"><span class="pendiente">Completar con dato real: cuántos clientes se perdieron y en qué periodo</span></p>
+        </article>
+        <article class="diag">
+          <p class="diag__estado">Sostener, no crecer</p>
+          <h4 class="diag__nombre">Segmento médico estético</h4>
+          <p class="diag__texto">Importante para la operación y estable en volumen, pero no es donde está la palanca de crecimiento. Se defiende con servicio, no con inversión.</p>
+        </article>
+        <article class="diag">
+          <p class="diag__estado">Sin explotar</p>
+          <h4 class="diag__nombre">Marca blanca</h4>
+          <p class="diag__texto">Capacidad de producción que hoy no se está ofreciendo como servicio. Es la única de las tres que abre mercado internacional y la única que no es una campaña, sino una línea de negocio nueva.</p>
+        </article>
+      </div>
+
+      <h3 class="rotulo revela">Concepto creativo</h3>
+      <div class="revela">
+        <p class="b2b__intro">En B2C el match perfecto es el equilibrio entre figura y disfrute. En B2B el equilibrio es otro: entre lo que el negocio necesita vender y lo que un proveedor es capaz de sostener mes a mes. La idea de encaje se mantiene, la pieza no se recicla. Fajitex se presenta como el aliado de producción que se ajusta al modelo de cada cliente, y no como un catálogo más.</p>
+        <div class="modelos">
+          <div class="modelo">
+            <p class="modelo__clave">Modelo 1</p>
+            <p><strong>Reventa de catálogo.</strong> El negocio vende producto Fajitex con nuestra marca. Necesita disponibilidad, pedido mínimo bajo y reposición rápida.</p>
+          </div>
+          <div class="modelo">
+            <p class="modelo__clave">Modelo 2</p>
+            <p><strong>Desarrollo de marca propia.</strong> Producimos para la marca del cliente. Necesita ficha técnica, control de calidad y acuerdos claros sobre el diseño.</p>
+          </div>
+          <div class="modelo">
+            <p class="modelo__clave">Modelo 3</p>
+            <p><strong>Reemplazo de proveedor.</strong> El cliente ya vende fajas, pero le fallaron en calidad o en fecha. Necesita cumplimiento demostrable antes que precio.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="rotulo revela">Segmentación</h3>
+      <div class="tabla-envoltura revela" style="margin-top:0">
+        <table class="datos">
+          <thead>
+            <tr><th scope="col">Segmento</th><th scope="col">Prioridad</th><th scope="col">Objetivo</th><th scope="col">Enfoque</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fecha">Mayoristas perdidos</td>
+              <td><span class="marca-nivel marca-nivel--alto">Alta</span></td>
+              <td>Reactivación</td>
+              <td>Contacto directo con la causa de salida documentada. Primero entender por qué se fueron, después ofrecer.</td>
+            </tr>
+            <tr>
+              <td class="fecha">Mayoristas activos</td>
+              <td><span class="marca-nivel marca-nivel--alto">Alta</span></td>
+              <td>Retención</td>
+              <td>Previsibilidad de entrega y condiciones preferentes. En mayorista pesa más cumplir la fecha que bajar el precio.</td>
+            </tr>
+            <tr>
+              <td class="fecha">Minoristas, boutiques y estéticas de moda</td>
+              <td><span class="marca-nivel marca-nivel--alto">Alta</span></td>
+              <td>Captación</td>
+              <td>Catálogo abierto y pedido mínimo bajo, para que probarnos no le cueste caro al negocio pequeño.</td>
+            </tr>
+            <tr>
+              <td class="fecha">Médico estético y cirugía</td>
+              <td><span class="marca-nivel">Media</span></td>
+              <td>Mantenimiento</td>
+              <td>Ficha técnica y servicio postventa. No se invierte en crecerlo, se invierte en no perderlo.</td>
+            </tr>
+            <tr>
+              <td class="fecha">Marca blanca e internacional</td>
+              <td><span class="marca-nivel marca-nivel--medioalto">Estratégica</span></td>
+              <td>Nueva línea de negocio</td>
+              <td>No se ejecuta hasta que Presidencia defina canal, condiciones de producción y mercado objetivo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="rotulo revela">Táctica por segmento</h3>
+      <div class="tacticas revela">
+        <article class="tactica">
+          <h4 class="tactica__nombre">Mayoristas perdidos</h4>
+          <div class="tactica__campos">
+            <div><p class="clave">Acción</p><p class="valor">Llamada de reactivación con la causa de salida en la mano, y oferta de reingreso construida sobre esa causa.</p></div>
+            <div><p class="clave">Canal</p><p class="valor">Comercial directo, con email de seguimiento.</p></div>
+          </div>
+          <p class="tactica__cierre"><span class="marca-aprob">Requiere aprobación</span> si el reingreso implica una condición comercial distinta a la lista vigente.</p>
+        </article>
+
+        <article class="tactica">
+          <h4 class="tactica__nombre">Mayoristas activos</h4>
+          <div class="tactica__campos">
+            <div><p class="clave">Acción</p><p class="valor">Plan de retención con calendario de entregas comprometido y condiciones preferentes por volumen.</p></div>
+            <div><p class="clave">Canal</p><p class="valor">Comercial directo.</p></div>
+          </div>
+          <p class="tactica__cierre"><span class="marca-aprob">Requiere aprobación</span> porque las condiciones preferentes tocan precio.</p>
+        </article>
+
+        <article class="tactica">
+          <h4 class="tactica__nombre">Minoristas y boutiques</h4>
+          <div class="tactica__campos">
+            <div><p class="clave">Acción</p><p class="valor">Captación por landing B2B, con catálogo y pedido mínimo publicados para filtrar solo.</p></div>
+            <div><p class="clave">Canal</p><p class="valor">Google Search, Meta Lead Ads y la landing B2B.</p></div>
+          </div>
+          <p class="tactica__cierre"><span class="sin-aprobacion">Se puede activar ya</span> mientras se mantenga la lista de precios vigente.</p>
+        </article>
+
+        <article class="tactica">
+          <h4 class="tactica__nombre">Médico estético</h4>
+          <div class="tactica__campos">
+            <div><p class="clave">Acción</p><p class="valor">Mantenimiento con ficha técnica actualizada y servicio postventa. Contacto periódico sin campaña detrás.</p></div>
+            <div><p class="clave">Canal</p><p class="valor">Comercial directo y email.</p></div>
+          </div>
+          <p class="tactica__cierre"><span class="sin-aprobacion">Se puede activar ya</span></p>
+        </article>
+      </div>
+
+      <h3 class="rotulo revela">Marca blanca e internacional</h3>
+      <div class="oscuro revela">
+        <p class="oscuro__eyebrow">No es una campaña</p>
+        <h4 class="oscuro__titulo">Es una línea de negocio nueva</h4>
+        <p class="oscuro__texto">Vender capacidad de producción a marcas de terceros no se resuelve con pauta. Cambia a quién le facturamos, con qué condiciones producimos y en qué país competimos. Por eso va acá separado del resto: <strong>los tres puntos de abajo se resuelven antes de ejecutar</strong>, no durante.</p>
+        <div class="lista-check">
+          <div class="check">
+            <div class="check__caja" aria-hidden="true"></div>
+            <div>
+              <p class="check__nombre">Nuevo canal digital</p>
+              <p class="check__texto">Sitio o sección propia para marca blanca, separada del canal de consumo. Quien busca maquila no puede aterrizar en la tienda de la clienta final.</p>
+              <span class="marca-aprob">Requiere aprobación de Presidencia</span>
+            </div>
+          </div>
+          <div class="check">
+            <div class="check__caja" aria-hidden="true"></div>
+            <div>
+              <p class="check__nombre">Condiciones comerciales de producción</p>
+              <p class="check__texto">Mínimos por referencia, tiempos de entrega, margen y a quién pertenece el diseño desarrollado. Sin esto no hay cotización posible.</p>
+              <span class="marca-aprob">Requiere aprobación de Presidencia</span>
+            </div>
+          </div>
+          <div class="check">
+            <div class="check__caja" aria-hidden="true"></div>
+            <div>
+              <p class="check__nombre">Mercado objetivo internacional</p>
+              <p class="check__texto">A qué país se entra primero y bajo qué régimen de exportación. Abrir a todos a la vez es no abrir ninguno.</p>
+              <span class="marca-aprob">Requiere aprobación de Presidencia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="rotulo revela">Landing de aterrizaje B2B</h3>
+      <div class="notas revela" style="margin-top:0">
+        <div class="nota">
+          <h4>Qué contiene</h4>
+          <p>Página optimizada para búsqueda con <strong>los cuatro segmentos separados</strong>, mayorista, minorista, estética y marca blanca, cada uno con su propia sección y sus propios términos de búsqueda. Lleva marcado <strong>schema.org</strong> para que Google la indexe como proveedor de fabricación y no como tienda de consumo.</p>
+        </div>
+        <div class="nota">
+          <h4>Para qué sirve</h4>
+          <p>Es el destino de toda la pauta B2B: sin ella, Google Search y Meta Lead Ads no tienen a dónde llevar el tráfico. El formulario entra conectado a <strong>Google Sheets y Bitrix24</strong>, así que el lead cae en el CRM sin pasos manuales y con su segmento etiquetado.
+            <span class="pendiente">Pendiente: enlazar la URL en este documento</span>
+          </p>
+        </div>
+      </div>
+
+      <h3 class="rotulo revela">Paid media B2B</h3>
+      <div class="tacticas revela">
+        <article class="tactica">
+          <h4 class="tactica__nombre">Google Search</h4>
+          <div class="tactica__campos">
+            <div><p class="clave">Grupos de anuncios y términos</p></div>
+          </div>
+          <div class="tabla-envoltura" style="margin-top:12px">
+            <table class="datos">
+              <thead><tr><th scope="col">Grupo</th><th scope="col">Términos de búsqueda</th></tr></thead>
+              <tbody>
+                <tr><td class="fecha">Distribuidor mayorista</td><td>fábrica de fajas colombianas · fajas al por mayor Colombia · proveedor de fajas mayorista</td></tr>
+                <tr><td class="fecha">Marca blanca</td><td>fabricar fajas con mi marca · maquila de fajas Colombia · private label fajas</td></tr>
+                <tr><td class="fecha">Estéticas</td><td>fajas postquirúrgicas al por mayor · proveedor de fajas para clínicas</td></tr>
+                <tr><td class="fecha">Minorista y boutique</td><td>comprar fajas para revender · catálogo de fajas mayorista · pedido mínimo fajas</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tactica__cierre"><span class="sin-aprobacion">Se puede activar ya</span> con la lista de precios vigente. El grupo de marca blanca queda pausado hasta que se aprueben sus condiciones.</p>
+        </article>
+
+        <article class="tactica">
+          <h4 class="tactica__nombre">Meta Lead Ads</h4>
+          <div class="tactica__campos">
+            <div><p class="clave">Objetivo</p><p class="valor">Generación de clientes potenciales con formulario nativo, sin salir de la plataforma.</p></div>
+            <div><p class="clave">Audiencia</p><p class="valor">Dueños de negocio de 25 a 55 años. Intereses en emprendimiento, comercio de moda y distribución.</p></div>
+            <div><p class="clave">Geo</p><p class="valor">Colombia. Ampliable a mercados de exportación solo cuando marca blanca esté aprobada.</p></div>
+            <div><p class="clave">Copy</p><p class="valor"><strong>«¿Tienes un negocio y quieres vender fajas? Encuentra tu match de producción.»</strong></p></div>
+            <div><p class="clave">Preguntas del formulario</p><p class="valor">Nombre, WhatsApp, ciudad, tipo de negocio (mayorista, minorista, estética o marca propia) y volumen estimado de compra.</p></div>
+            <div><p class="clave">Destino del lead</p><p class="valor">Bitrix24, por la misma integración de la landing, con la etiqueta de segmento puesta para que comercial sepa a quién está llamando.</p></div>
+          </div>
+          <p class="tactica__cierre"><span class="sin-aprobacion">Se puede activar ya</span></p>
+        </article>
+      </div>
+
+      <h3 class="rotulo revela">Autonomía y escalamiento</h3>
+      <div class="dos-columnas revela">
+        <div class="columna columna--si">
+          <p class="columna__cabeza">Ya se puede activar</p>
+          <ul>
+            <li>Landing B2B y su indexación en buscadores</li>
+            <li>Google Search con la lista de precios vigente</li>
+            <li>Meta Lead Ads de captación</li>
+            <li>Contacto comercial con mayoristas perdidos y activos, sin ofertas especiales</li>
+            <li>Mantenimiento del segmento médico estético</li>
+          </ul>
+        </div>
+        <div class="columna columna--no">
+          <p class="columna__cabeza">Necesita aprobación</p>
+          <ul>
+            <li>Condiciones especiales de reingreso para mayoristas perdidos</li>
+            <li>Condiciones preferentes de retención, porque tocan precio</li>
+            <li>Marca blanca: canal digital propio</li>
+            <li>Marca blanca: condiciones comerciales de producción</li>
+            <li>Marca blanca: mercado internacional objetivo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 08 APROBACIONES ══════════════ -->
+  <section class="seccion aprobaciones" id="aprobaciones">
+    <div class="contenedor">
+      <div class="seccion__encabezado revela">
+        <p class="seccion__numero">08</p>
         <div>
           <p class="eyebrow">Lo que necesito de aprobación</p>
           <h2 class="seccion__titulo">Cuatro decisiones y el proyecto arranca</h2>
@@ -1474,6 +1803,11 @@ button, input, textarea { font: inherit; color: inherit; }
   --alto: #C7221F;
   --corte-piso:  #145F54;
   --corte-tinta: #FFFFFF;
+  --oscuro-piso:  #2B1410;
+  --oscuro-carta: #3B1E18;
+  --oscuro-tinta: #FAEFE6;
+  --oscuro-sec:   rgba(250, 239, 230, .74);
+  --oscuro-linea: rgba(250, 239, 230, .22);
 
   --display: "Lilita One", "Baloo 2", Impact, sans-serif;
   --titular: "Baloo 2", "Trebuchet MS", sans-serif;
@@ -1518,6 +1852,11 @@ button, input, textarea { font: inherit; color: inherit; }
     --alto: #FF8A80;
     --corte-piso:  #4FD2BC;
     --corte-tinta: #08211D;
+    --oscuro-piso:  #130A08;
+    --oscuro-carta: #1F110E;
+    --oscuro-tinta: #FBEDE4;
+    --oscuro-sec:   rgba(251, 237, 228, .72);
+    --oscuro-linea: rgba(251, 237, 228, .20);
   }
 }
 
@@ -1552,6 +1891,11 @@ button, input, textarea { font: inherit; color: inherit; }
   --alto: #FF8A80;
   --corte-piso:  #4FD2BC;
   --corte-tinta: #08211D;
+  --oscuro-piso:  #130A08;
+  --oscuro-carta: #1F110E;
+  --oscuro-tinta: #FBEDE4;
+  --oscuro-sec:   rgba(251, 237, 228, .72);
+  --oscuro-linea: rgba(251, 237, 228, .20);
 }
 
 /* ============ Base ============ */
@@ -1935,6 +2279,80 @@ table.datos .campana-id { font-family: var(--display); color: var(--rojo); font-
 .nota-planb-hito .clave { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--menta); }
 .nota-planb-hito p { margin-top: 5px; }
 
+/* ============ 07 Canal B2B: lectura ejecutiva, menos adorno ============ */
+.b2b__intro { max-width: 66ch; font-size: 1.06rem; color: var(--tinta-sec); }
+.b2b__intro + * { margin-top: 30px; }
+.b2b h3.rotulo {
+  font-family: var(--mono); font-size: .72rem; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--rojo); margin-top: 52px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--linea);
+}
+.b2b h3.rotulo + * { margin-top: 22px; }
+
+.diagnostico { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.diag { background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); padding: 24px; display: flex; flex-direction: column; }
+.diag--foco { border-color: var(--rojo); box-shadow: var(--sombra); }
+.diag__estado { font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.diag--foco .diag__estado { color: var(--rojo); }
+.diag__nombre { margin-top: 8px; font-size: 1.2rem; }
+.diag__texto { margin-top: 12px; font-size: .96rem; color: var(--tinta-sec); }
+.diag__cifra { margin-top: auto; padding-top: 16px; }
+
+.modelos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.modelo { padding: 18px 20px; border-radius: var(--radio-chico); background: var(--nata); border: 1px solid var(--linea); }
+.modelo__clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--rojo); }
+.modelo p { margin-top: 7px; font-size: .95rem; color: var(--tinta-sec); }
+.modelo strong { color: var(--tinta); font-weight: 600; }
+
+.tacticas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.tactica { background: var(--nata); border: 1px solid var(--linea); border-radius: var(--radio); padding: 24px; display: flex; flex-direction: column; }
+.tactica__nombre { font-size: 1.12rem; }
+.tactica__campos { margin-top: 14px; display: grid; gap: 12px; }
+.tactica__campos .clave { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-sec); }
+.tactica__campos p + p { margin-top: 4px; }
+.tactica__campos .valor { font-size: .96rem; }
+.tactica__cierre { margin-top: auto; padding-top: 16px; }
+.sin-aprobacion {
+  display: inline-block; font-family: var(--mono); font-size: .68rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--menta); border: 1px solid var(--menta);
+  border-radius: 999px; padding: 4px 11px;
+}
+
+/* Bloque oscuro de marca blanca */
+.oscuro {
+  background: var(--oscuro-piso); color: var(--oscuro-tinta);
+  border-radius: var(--radio); padding: 40px; border: 1px solid var(--oscuro-linea);
+}
+.oscuro__eyebrow { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--oscuro-sec); }
+.oscuro__titulo { margin-top: 12px; font-size: 2rem; color: var(--oscuro-tinta); }
+.oscuro__texto { margin-top: 14px; max-width: 62ch; color: var(--oscuro-sec); font-size: 1.03rem; }
+.oscuro__texto strong { color: var(--oscuro-tinta); font-weight: 600; }
+.lista-check { display: grid; gap: 14px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--oscuro-linea); }
+.check { display: grid; grid-template-columns: 26px 1fr; gap: 14px; align-items: start; padding: 18px 20px; border-radius: var(--radio-chico); background: var(--oscuro-carta); }
+.check__caja { width: 20px; height: 20px; margin-top: 2px; border: 2px solid var(--oscuro-linea); border-radius: 5px; }
+.check__nombre { font-family: var(--titular); font-weight: 800; font-size: 1.05rem; }
+.check__texto { margin-top: 6px; font-size: .95rem; color: var(--oscuro-sec); }
+.check .marca-aprob { margin-top: 10px; }
+
+/* Resumen de autonomía */
+.dos-columnas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.columna { border-radius: var(--radio); border: 1px solid var(--linea); overflow: hidden; background: var(--nata); }
+.columna__cabeza { padding: 16px 22px; font-family: var(--titular); font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+.columna--si .columna__cabeza { background: var(--menta); color: #FFFFFF; }
+:root[data-theme="dark"] .columna--si .columna__cabeza { color: #08211D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .columna--si .columna__cabeza { color: #08211D; } }
+.columna--no .columna__cabeza { background: var(--rojo); color: #FFF6F0; }
+.columna ul { padding: 8px 0; }
+.columna li { padding: 12px 22px; font-size: .96rem; border-bottom: 1px solid var(--linea); display: grid; grid-template-columns: 14px 1fr; gap: 12px; align-items: baseline; }
+.columna li:last-child { border-bottom: 0; }
+.columna li::before { content: "▪"; font-size: .7em; }
+.columna--si li::before { color: var(--menta); }
+.columna--no li::before { color: var(--rojo); }
+
+@media (max-width: 1100px) {
+  .diagnostico, .modelos, .tacticas, .dos-columnas { grid-template-columns: 1fr; }
+}
+
 /* ============ Plan B ============ */
 .planb { background: var(--menta-piso); }
 .planb .seccion__numero, .planb .eyebrow { color: var(--menta); }
@@ -2085,6 +2503,7 @@ html { scroll-behavior: smooth; }
       &lt;a class="barra__link" href="#paid">Paid Media&lt;/a>
       &lt;a class="barra__link" href="#mensajeria">Email y WhatsApp&lt;/a>
       &lt;a class="barra__link" href="#planb">Plan B&lt;/a>
+      &lt;a class="barra__link" href="#b2b">B2B&lt;/a>
       &lt;a class="barra__link barra__link--destino" href="#aprobaciones">Aprobaciones&lt;/a>
     &lt;/nav>
   &lt;/div>
@@ -2263,7 +2682,7 @@ html { scroll-behavior: smooth; }
             &lt;/div>
             &lt;div class="ruta__pie">
               &lt;span class="marca-aprob">Requiere aprobación&lt;/span>
-              &lt;p>Porcentaje de descuento a definir. Es condición comercial, va en la sección 07.&lt;/p>
+              &lt;p>Porcentaje de descuento a definir. Es condición comercial, va en la sección 08.&lt;/p>
             &lt;/div>
           &lt;/div>
         &lt;/article>
@@ -2774,11 +3193,250 @@ html { scroll-behavior: smooth; }
     &lt;/div>
   &lt;/section>
 
-  &lt;!-- ══════════════ 07 APROBACIONES ══════════════ -->
-  &lt;section class="seccion aprobaciones" id="aprobaciones">
+  &lt;!-- ══════════════ 07 CANAL B2B ══════════════ -->
+  &lt;section class="seccion b2b" id="b2b">
     &lt;div class="contenedor">
       &lt;div class="seccion__encabezado revela">
         &lt;p class="seccion__numero">07&lt;/p>
+        &lt;div>
+          &lt;p class="eyebrow">Canal B2B&lt;/p>
+          &lt;h2 class="seccion__titulo">Encuentra tu match de negocio&lt;/h2>
+          &lt;p class="seccion__bajada">La misma idea de encaje, con otro interlocutor. Acá no se le habla a la clienta final sino a quien compra para revender, para producir su propia marca o para reemplazar un proveedor que le falló.&lt;/p>
+        &lt;/div>
+      &lt;/div>
+
+      &lt;h3 class="rotulo revela">Diagnóstico&lt;/h3>
+      &lt;div class="diagnostico revela">
+        &lt;article class="diag diag--foco">
+          &lt;p class="diag__estado">Foco prioritario&lt;/p>
+          &lt;h4 class="diag__nombre">Distribuidores mayoristas y minoristas&lt;/h4>
+          &lt;p class="diag__texto">Es donde se está perdiendo cliente. Hay salidas sin causa documentada, y sin saber por qué se fueron cualquier oferta de reingreso es a ciegas.&lt;/p>
+          &lt;p class="diag__cifra">&lt;span class="pendiente">Completar con dato real: cuántos clientes se perdieron y en qué periodo&lt;/span>&lt;/p>
+        &lt;/article>
+        &lt;article class="diag">
+          &lt;p class="diag__estado">Sostener, no crecer&lt;/p>
+          &lt;h4 class="diag__nombre">Segmento médico estético&lt;/h4>
+          &lt;p class="diag__texto">Importante para la operación y estable en volumen, pero no es donde está la palanca de crecimiento. Se defiende con servicio, no con inversión.&lt;/p>
+        &lt;/article>
+        &lt;article class="diag">
+          &lt;p class="diag__estado">Sin explotar&lt;/p>
+          &lt;h4 class="diag__nombre">Marca blanca&lt;/h4>
+          &lt;p class="diag__texto">Capacidad de producción que hoy no se está ofreciendo como servicio. Es la única de las tres que abre mercado internacional y la única que no es una campaña, sino una línea de negocio nueva.&lt;/p>
+        &lt;/article>
+      &lt;/div>
+
+      &lt;h3 class="rotulo revela">Concepto creativo&lt;/h3>
+      &lt;div class="revela">
+        &lt;p class="b2b__intro">En B2C el match perfecto es el equilibrio entre figura y disfrute. En B2B el equilibrio es otro: entre lo que el negocio necesita vender y lo que un proveedor es capaz de sostener mes a mes. La idea de encaje se mantiene, la pieza no se recicla. Fajitex se presenta como el aliado de producción que se ajusta al modelo de cada cliente, y no como un catálogo más.&lt;/p>
+        &lt;div class="modelos">
+          &lt;div class="modelo">
+            &lt;p class="modelo__clave">Modelo 1&lt;/p>
+            &lt;p>&lt;strong>Reventa de catálogo.&lt;/strong> El negocio vende producto Fajitex con nuestra marca. Necesita disponibilidad, pedido mínimo bajo y reposición rápida.&lt;/p>
+          &lt;/div>
+          &lt;div class="modelo">
+            &lt;p class="modelo__clave">Modelo 2&lt;/p>
+            &lt;p>&lt;strong>Desarrollo de marca propia.&lt;/strong> Producimos para la marca del cliente. Necesita ficha técnica, control de calidad y acuerdos claros sobre el diseño.&lt;/p>
+          &lt;/div>
+          &lt;div class="modelo">
+            &lt;p class="modelo__clave">Modelo 3&lt;/p>
+            &lt;p>&lt;strong>Reemplazo de proveedor.&lt;/strong> El cliente ya vende fajas, pero le fallaron en calidad o en fecha. Necesita cumplimiento demostrable antes que precio.&lt;/p>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+
+      &lt;h3 class="rotulo revela">Segmentación&lt;/h3>
+      &lt;div class="tabla-envoltura revela" style="margin-top:0">
+        &lt;table class="datos">
+          &lt;thead>
+            &lt;tr>&lt;th scope="col">Segmento&lt;/th>&lt;th scope="col">Prioridad&lt;/th>&lt;th scope="col">Objetivo&lt;/th>&lt;th scope="col">Enfoque&lt;/th>&lt;/tr>
+          &lt;/thead>
+          &lt;tbody>
+            &lt;tr>
+              &lt;td class="fecha">Mayoristas perdidos&lt;/td>
+              &lt;td>&lt;span class="marca-nivel marca-nivel--alto">Alta&lt;/span>&lt;/td>
+              &lt;td>Reactivación&lt;/td>
+              &lt;td>Contacto directo con la causa de salida documentada. Primero entender por qué se fueron, después ofrecer.&lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td class="fecha">Mayoristas activos&lt;/td>
+              &lt;td>&lt;span class="marca-nivel marca-nivel--alto">Alta&lt;/span>&lt;/td>
+              &lt;td>Retención&lt;/td>
+              &lt;td>Previsibilidad de entrega y condiciones preferentes. En mayorista pesa más cumplir la fecha que bajar el precio.&lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td class="fecha">Minoristas, boutiques y estéticas de moda&lt;/td>
+              &lt;td>&lt;span class="marca-nivel marca-nivel--alto">Alta&lt;/span>&lt;/td>
+              &lt;td>Captación&lt;/td>
+              &lt;td>Catálogo abierto y pedido mínimo bajo, para que probarnos no le cueste caro al negocio pequeño.&lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td class="fecha">Médico estético y cirugía&lt;/td>
+              &lt;td>&lt;span class="marca-nivel">Media&lt;/span>&lt;/td>
+              &lt;td>Mantenimiento&lt;/td>
+              &lt;td>Ficha técnica y servicio postventa. No se invierte en crecerlo, se invierte en no perderlo.&lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td class="fecha">Marca blanca e internacional&lt;/td>
+              &lt;td>&lt;span class="marca-nivel marca-nivel--medioalto">Estratégica&lt;/span>&lt;/td>
+              &lt;td>Nueva línea de negocio&lt;/td>
+              &lt;td>No se ejecuta hasta que Presidencia defina canal, condiciones de producción y mercado objetivo.&lt;/td>
+            &lt;/tr>
+          &lt;/tbody>
+        &lt;/table>
+      &lt;/div>
+
+      &lt;h3 class="rotulo revela">Táctica por segmento&lt;/h3>
+      &lt;div class="tacticas revela">
+        &lt;article class="tactica">
+          &lt;h4 class="tactica__nombre">Mayoristas perdidos&lt;/h4>
+          &lt;div class="tactica__campos">
+            &lt;div>&lt;p class="clave">Acción&lt;/p>&lt;p class="valor">Llamada de reactivación con la causa de salida en la mano, y oferta de reingreso construida sobre esa causa.&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Canal&lt;/p>&lt;p class="valor">Comercial directo, con email de seguimiento.&lt;/p>&lt;/div>
+          &lt;/div>
+          &lt;p class="tactica__cierre">&lt;span class="marca-aprob">Requiere aprobación&lt;/span> si el reingreso implica una condición comercial distinta a la lista vigente.&lt;/p>
+        &lt;/article>
+
+        &lt;article class="tactica">
+          &lt;h4 class="tactica__nombre">Mayoristas activos&lt;/h4>
+          &lt;div class="tactica__campos">
+            &lt;div>&lt;p class="clave">Acción&lt;/p>&lt;p class="valor">Plan de retención con calendario de entregas comprometido y condiciones preferentes por volumen.&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Canal&lt;/p>&lt;p class="valor">Comercial directo.&lt;/p>&lt;/div>
+          &lt;/div>
+          &lt;p class="tactica__cierre">&lt;span class="marca-aprob">Requiere aprobación&lt;/span> porque las condiciones preferentes tocan precio.&lt;/p>
+        &lt;/article>
+
+        &lt;article class="tactica">
+          &lt;h4 class="tactica__nombre">Minoristas y boutiques&lt;/h4>
+          &lt;div class="tactica__campos">
+            &lt;div>&lt;p class="clave">Acción&lt;/p>&lt;p class="valor">Captación por landing B2B, con catálogo y pedido mínimo publicados para filtrar solo.&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Canal&lt;/p>&lt;p class="valor">Google Search, Meta Lead Ads y la landing B2B.&lt;/p>&lt;/div>
+          &lt;/div>
+          &lt;p class="tactica__cierre">&lt;span class="sin-aprobacion">Se puede activar ya&lt;/span> mientras se mantenga la lista de precios vigente.&lt;/p>
+        &lt;/article>
+
+        &lt;article class="tactica">
+          &lt;h4 class="tactica__nombre">Médico estético&lt;/h4>
+          &lt;div class="tactica__campos">
+            &lt;div>&lt;p class="clave">Acción&lt;/p>&lt;p class="valor">Mantenimiento con ficha técnica actualizada y servicio postventa. Contacto periódico sin campaña detrás.&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Canal&lt;/p>&lt;p class="valor">Comercial directo y email.&lt;/p>&lt;/div>
+          &lt;/div>
+          &lt;p class="tactica__cierre">&lt;span class="sin-aprobacion">Se puede activar ya&lt;/span>&lt;/p>
+        &lt;/article>
+      &lt;/div>
+
+      &lt;h3 class="rotulo revela">Marca blanca e internacional&lt;/h3>
+      &lt;div class="oscuro revela">
+        &lt;p class="oscuro__eyebrow">No es una campaña&lt;/p>
+        &lt;h4 class="oscuro__titulo">Es una línea de negocio nueva&lt;/h4>
+        &lt;p class="oscuro__texto">Vender capacidad de producción a marcas de terceros no se resuelve con pauta. Cambia a quién le facturamos, con qué condiciones producimos y en qué país competimos. Por eso va acá separado del resto: &lt;strong>los tres puntos de abajo se resuelven antes de ejecutar&lt;/strong>, no durante.&lt;/p>
+        &lt;div class="lista-check">
+          &lt;div class="check">
+            &lt;div class="check__caja" aria-hidden="true">&lt;/div>
+            &lt;div>
+              &lt;p class="check__nombre">Nuevo canal digital&lt;/p>
+              &lt;p class="check__texto">Sitio o sección propia para marca blanca, separada del canal de consumo. Quien busca maquila no puede aterrizar en la tienda de la clienta final.&lt;/p>
+              &lt;span class="marca-aprob">Requiere aprobación de Presidencia&lt;/span>
+            &lt;/div>
+          &lt;/div>
+          &lt;div class="check">
+            &lt;div class="check__caja" aria-hidden="true">&lt;/div>
+            &lt;div>
+              &lt;p class="check__nombre">Condiciones comerciales de producción&lt;/p>
+              &lt;p class="check__texto">Mínimos por referencia, tiempos de entrega, margen y a quién pertenece el diseño desarrollado. Sin esto no hay cotización posible.&lt;/p>
+              &lt;span class="marca-aprob">Requiere aprobación de Presidencia&lt;/span>
+            &lt;/div>
+          &lt;/div>
+          &lt;div class="check">
+            &lt;div class="check__caja" aria-hidden="true">&lt;/div>
+            &lt;div>
+              &lt;p class="check__nombre">Mercado objetivo internacional&lt;/p>
+              &lt;p class="check__texto">A qué país se entra primero y bajo qué régimen de exportación. Abrir a todos a la vez es no abrir ninguno.&lt;/p>
+              &lt;span class="marca-aprob">Requiere aprobación de Presidencia&lt;/span>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+
+      &lt;h3 class="rotulo revela">Landing de aterrizaje B2B&lt;/h3>
+      &lt;div class="notas revela" style="margin-top:0">
+        &lt;div class="nota">
+          &lt;h4>Qué contiene&lt;/h4>
+          &lt;p>Página optimizada para búsqueda con &lt;strong>los cuatro segmentos separados&lt;/strong>, mayorista, minorista, estética y marca blanca, cada uno con su propia sección y sus propios términos de búsqueda. Lleva marcado &lt;strong>schema.org&lt;/strong> para que Google la indexe como proveedor de fabricación y no como tienda de consumo.&lt;/p>
+        &lt;/div>
+        &lt;div class="nota">
+          &lt;h4>Para qué sirve&lt;/h4>
+          &lt;p>Es el destino de toda la pauta B2B: sin ella, Google Search y Meta Lead Ads no tienen a dónde llevar el tráfico. El formulario entra conectado a &lt;strong>Google Sheets y Bitrix24&lt;/strong>, así que el lead cae en el CRM sin pasos manuales y con su segmento etiquetado.
+            &lt;span class="pendiente">Pendiente: enlazar la URL en este documento&lt;/span>
+          &lt;/p>
+        &lt;/div>
+      &lt;/div>
+
+      &lt;h3 class="rotulo revela">Paid media B2B&lt;/h3>
+      &lt;div class="tacticas revela">
+        &lt;article class="tactica">
+          &lt;h4 class="tactica__nombre">Google Search&lt;/h4>
+          &lt;div class="tactica__campos">
+            &lt;div>&lt;p class="clave">Grupos de anuncios y términos&lt;/p>&lt;/div>
+          &lt;/div>
+          &lt;div class="tabla-envoltura" style="margin-top:12px">
+            &lt;table class="datos">
+              &lt;thead>&lt;tr>&lt;th scope="col">Grupo&lt;/th>&lt;th scope="col">Términos de búsqueda&lt;/th>&lt;/tr>&lt;/thead>
+              &lt;tbody>
+                &lt;tr>&lt;td class="fecha">Distribuidor mayorista&lt;/td>&lt;td>fábrica de fajas colombianas · fajas al por mayor Colombia · proveedor de fajas mayorista&lt;/td>&lt;/tr>
+                &lt;tr>&lt;td class="fecha">Marca blanca&lt;/td>&lt;td>fabricar fajas con mi marca · maquila de fajas Colombia · private label fajas&lt;/td>&lt;/tr>
+                &lt;tr>&lt;td class="fecha">Estéticas&lt;/td>&lt;td>fajas postquirúrgicas al por mayor · proveedor de fajas para clínicas&lt;/td>&lt;/tr>
+                &lt;tr>&lt;td class="fecha">Minorista y boutique&lt;/td>&lt;td>comprar fajas para revender · catálogo de fajas mayorista · pedido mínimo fajas&lt;/td>&lt;/tr>
+              &lt;/tbody>
+            &lt;/table>
+          &lt;/div>
+          &lt;p class="tactica__cierre">&lt;span class="sin-aprobacion">Se puede activar ya&lt;/span> con la lista de precios vigente. El grupo de marca blanca queda pausado hasta que se aprueben sus condiciones.&lt;/p>
+        &lt;/article>
+
+        &lt;article class="tactica">
+          &lt;h4 class="tactica__nombre">Meta Lead Ads&lt;/h4>
+          &lt;div class="tactica__campos">
+            &lt;div>&lt;p class="clave">Objetivo&lt;/p>&lt;p class="valor">Generación de clientes potenciales con formulario nativo, sin salir de la plataforma.&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Audiencia&lt;/p>&lt;p class="valor">Dueños de negocio de 25 a 55 años. Intereses en emprendimiento, comercio de moda y distribución.&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Geo&lt;/p>&lt;p class="valor">Colombia. Ampliable a mercados de exportación solo cuando marca blanca esté aprobada.&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Copy&lt;/p>&lt;p class="valor">&lt;strong>«¿Tienes un negocio y quieres vender fajas? Encuentra tu match de producción.»&lt;/strong>&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Preguntas del formulario&lt;/p>&lt;p class="valor">Nombre, WhatsApp, ciudad, tipo de negocio (mayorista, minorista, estética o marca propia) y volumen estimado de compra.&lt;/p>&lt;/div>
+            &lt;div>&lt;p class="clave">Destino del lead&lt;/p>&lt;p class="valor">Bitrix24, por la misma integración de la landing, con la etiqueta de segmento puesta para que comercial sepa a quién está llamando.&lt;/p>&lt;/div>
+          &lt;/div>
+          &lt;p class="tactica__cierre">&lt;span class="sin-aprobacion">Se puede activar ya&lt;/span>&lt;/p>
+        &lt;/article>
+      &lt;/div>
+
+      &lt;h3 class="rotulo revela">Autonomía y escalamiento&lt;/h3>
+      &lt;div class="dos-columnas revela">
+        &lt;div class="columna columna--si">
+          &lt;p class="columna__cabeza">Ya se puede activar&lt;/p>
+          &lt;ul>
+            &lt;li>Landing B2B y su indexación en buscadores&lt;/li>
+            &lt;li>Google Search con la lista de precios vigente&lt;/li>
+            &lt;li>Meta Lead Ads de captación&lt;/li>
+            &lt;li>Contacto comercial con mayoristas perdidos y activos, sin ofertas especiales&lt;/li>
+            &lt;li>Mantenimiento del segmento médico estético&lt;/li>
+          &lt;/ul>
+        &lt;/div>
+        &lt;div class="columna columna--no">
+          &lt;p class="columna__cabeza">Necesita aprobación&lt;/p>
+          &lt;ul>
+            &lt;li>Condiciones especiales de reingreso para mayoristas perdidos&lt;/li>
+            &lt;li>Condiciones preferentes de retención, porque tocan precio&lt;/li>
+            &lt;li>Marca blanca: canal digital propio&lt;/li>
+            &lt;li>Marca blanca: condiciones comerciales de producción&lt;/li>
+            &lt;li>Marca blanca: mercado internacional objetivo&lt;/li>
+          &lt;/ul>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/section>
+
+  &lt;!-- ══════════════ 08 APROBACIONES ══════════════ -->
+  &lt;section class="seccion aprobaciones" id="aprobaciones">
+    &lt;div class="contenedor">
+      &lt;div class="seccion__encabezado revela">
+        &lt;p class="seccion__numero">08&lt;/p>
         &lt;div>
           &lt;p class="eyebrow">Lo que necesito de aprobación&lt;/p>
           &lt;h2 class="seccion__titulo">Cuatro decisiones y el proyecto arranca&lt;/h2>
